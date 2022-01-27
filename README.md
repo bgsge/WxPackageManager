@@ -29,7 +29,11 @@ $ curl "http://localhost:5555/rad/wx.packages:manager/packages?registry=default"
  http://localhost:5555/WxPackageManager/api-docs
  
  ## Set up
- Simply install the package into your webMethods Integration Server. You will need to provide an mysql database and the set the connection parameters. You can do this after starting up your server via the adapters -> jdbc adapter -> connections -> 'wx.packages.manager._priv.jdbc:conn'
+ Simply install the package into your webMethods Integration Server. This package also requires the package JcPublicTools (https://github.com/johnpcarter/JcPublicTools).
+ 
+ # Database setup
+ 
+ You will need to provide an mysql database and the set the connection parameters. You can do this after starting up your server via the adapters -> jdbc adapter -> connections -> 'wx.packages.manager._priv.jdbc:conn'
  
  Alternatively you can copy the connection properties file application.properties in the packages WxPackageManager resources directory to the root folder or your Integration Server/MSR and edit the connection properties to point to your database before starting up the server.
  

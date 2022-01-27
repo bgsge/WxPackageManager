@@ -11,7 +11,9 @@
     <null name="wx.packages.manager._priv:shutdown"/>
   </record>
   <null name="replication_services"/>
-  <null name="requires"/>
+  <record name="requires" javaclass="com.wm.util.Values">
+    <value name="JcPublicTools">*.*</value>
+  </record>
   <value name="listACL">Default</value>
   <value name="webappLoad">yes</value>
 </Values>
