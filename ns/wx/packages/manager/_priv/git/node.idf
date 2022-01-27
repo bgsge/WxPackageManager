@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">wx.packages.manager._priv.git</value>
+  <value name="is_public">false</value>
+  <value name="encodeutf8">true</value>
+  <value name="shared">CQoJcHJpdmF0ZSBzdGF0aWMgdm9pZCBkZWxldGVEaXIoRmlsZSBmaWxlKSB7CgkgICAgRmlsZVtd
+IGNvbnRlbnRzID0gZmlsZS5saXN0RmlsZXMoKTsKCSAgICBpZiAoY29udGVudHMgIT0gbnVsbCkg
+ewoJICAgICAgICBmb3IgKEZpbGUgZiA6IGNvbnRlbnRzKSB7CgkgICAgICAgICAgICBpZiAoISBG
+aWxlcy5pc1N5bWJvbGljTGluayhmLnRvUGF0aCgpKSkgewoJICAgICAgICAgICAgICAgIGRlbGV0
+ZURpcihmKTsKCSAgICAgICAgICAgIH0KCSAgICAgICAgfQoJICAgIH0KCSAgICBmaWxlLmRlbGV0
+ZSgpOwoJfQ==</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.io.File</value>
+    <value>java.io.IOException</value>
+    <value>java.nio.file.Files</value>
+    <value>java.util.ArrayList</value>
+    <value>java.util.Collection</value>
+    <value>java.util.Map</value>
+    <value>org.eclipse.jgit.api.CloneCommand</value>
+    <value>org.eclipse.jgit.api.Git</value>
+    <value>org.eclipse.jgit.api.ListTagCommand</value>
+    <value>org.eclipse.jgit.api.TagCommand</value>
+    <value>org.eclipse.jgit.api.errors.GitAPIException</value>
+    <value>org.eclipse.jgit.api.errors.InvalidRemoteException</value>
+    <value>org.eclipse.jgit.api.errors.JGitInternalException</value>
+    <value>org.eclipse.jgit.api.errors.TransportException</value>
+    <value>org.eclipse.jgit.attributes.AttributesNodeProvider</value>
+    <value>org.eclipse.jgit.lib.BaseRepositoryBuilder</value>
+    <value>org.eclipse.jgit.lib.ObjectDatabase</value>
+    <value>org.eclipse.jgit.lib.ObjectId</value>
+    <value>org.eclipse.jgit.lib.Ref</value>
+    <value>org.eclipse.jgit.lib.RefDatabase</value>
+    <value>org.eclipse.jgit.lib.ReflogReader</value>
+    <value>org.eclipse.jgit.lib.Repository</value>
+    <value>org.eclipse.jgit.lib.StoredConfig</value>
+    <value>org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider</value>
+  </array>
+</Values>

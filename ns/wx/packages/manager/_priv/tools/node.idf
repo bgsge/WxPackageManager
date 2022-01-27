@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">wx.packages.manager._priv.tools</value>
+  <value name="is_public">false</value>
+  <value name="shared">CnByaXZhdGUgc3RhdGljIFN0cmluZyBfdGFza0lkID0gbnVsbDsKCnByaXZhdGUgc3RhdGljIFN0
+cmluZyBfZGVmYXVsdFJlZ2lzdHJ5ID0gImRlZmF1bHQiOwoKcHJpdmF0ZSBzdGF0aWMgSGFzaE1h
+cDxTdHJpbmcsIEludGVnZXI+IF9wYWNrYWdlQ291bnRlciA9IG5ldyBIYXNoTWFwPFN0cmluZywg
+SW50ZWdlcj4oKTs=</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.util.ArrayList</value>
+    <value>java.util.HashMap</value>
+    <value>com.softwareag.is.dynamicvariables.DynamicVariablesEncryptor</value>
+  </array>
+</Values>
