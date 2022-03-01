@@ -359,6 +359,23 @@
             <value name="is_global">false</value>
           </record>
           <record javaclass="com.wm.util.Values">
+            <value name="node_type">record</value>
+            <value name="node_subtype">unknown</value>
+            <value name="node_comment"></value>
+            <record name="node_hints" javaclass="com.wm.util.Values">
+              <value name="field_largerEditor">false</value>
+              <value name="field_password">false</value>
+            </record>
+            <value name="is_public">false</value>
+            <value name="field_name">IS_VISIBLE</value>
+            <value name="field_type">object</value>
+            <value name="field_dim">0</value>
+            <value name="wrapper_type">java.lang.Boolean</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+          </record>
+          <record javaclass="com.wm.util.Values">
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="node_comment"></value>
@@ -501,6 +518,25 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
       </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_usereditable">true</value>
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">EMAIL_ADDRESS</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <array name="field_options" type="value" depth="1">
+        </array>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -599,6 +635,15 @@
 
 <MAPCOPY FROM="/output;2;0/SRC_PRIVATE_REPO;3.1;0" TO="/package;4;0;wx.packages.manager.packages_.docTypes:Package/sourceIsPrivate;3.1;0">
 </MAPCOPY>
+
+<MAPCOPY FROM="/output;2;0/IS_VISIBLE;3.1;0" TO="/package;4;0;wx.packages.manager.packages_.docTypes:Package/isVisible;3.1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/EMAIL_ADDRESS;1;0" TO="/package;4;0;wx.packages.manager.packages_.docTypes:Package/alertEmail;1;0">
+</MAPCOPY>
+
+<MAPDELETE FIELD="/EMAIL_ADDRESS;1;0">
+</MAPDELETE>
 </MAP>
 
 <BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
@@ -3655,6 +3700,23 @@
             </record>
             <value name="is_public">false</value>
             <value name="field_name">SRC_PRIVATE_REPO</value>
+            <value name="field_type">object</value>
+            <value name="field_dim">0</value>
+            <value name="wrapper_type">java.lang.Boolean</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+          </record>
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">record</value>
+            <value name="node_subtype">unknown</value>
+            <value name="node_comment"></value>
+            <record name="node_hints" javaclass="com.wm.util.Values">
+              <value name="field_largerEditor">false</value>
+              <value name="field_password">false</value>
+            </record>
+            <value name="is_public">false</value>
+            <value name="field_name">IS_VISIBLE</value>
             <value name="field_type">object</value>
             <value name="field_dim">0</value>
             <value name="wrapper_type">java.lang.Boolean</value>
