@@ -7,6 +7,10 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.jcraft.jsch.IdentityRepository;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +21,7 @@ import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ListTagCommand;
 import org.eclipse.jgit.api.TagCommand;
+import org.eclipse.jgit.api.TransportConfigCallback;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.JGitInternalException;
@@ -30,7 +35,13 @@ import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.ReflogReader;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
+import org.eclipse.jgit.transport.SshSessionFactory;
+import org.eclipse.jgit.transport.SshTransport;
+import org.eclipse.jgit.transport.Transport;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.eclipse.jgit.transport.ssh.jsch.JschConfigSessionFactory;
+import org.eclipse.jgit.transport.ssh.jsch.OpenSshConfig.Host;
+import org.eclipse.jgit.util.FS;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class git
@@ -60,17 +71,17 @@ public final class git
 		// [i] field:0:optional user
 		// [i] field:0:optional password
 		// [i] field:0:required localDir
+		// [i] field:0:optional privateKeyFile
 		// pipeline in
 		
 		IDataCursor cursor = pipeline.getCursor();
 		String uri = IDataUtil.getString(cursor, "uri");
 		String repo = IDataUtil.getString(cursor, "repoName");
 		String tag = IDataUtil.getString(cursor, "tag");
-		
 		String user = IDataUtil.getString(cursor, "user");
-		String password = IDataUtil.getString(cursor, "password");
-		
+		String password = IDataUtil.getString(cursor, "password");		
 		String localDirStr = IDataUtil.getString(cursor, "localDir");
+		String pathToPrivateKey = IDataUtil.getString(cursor, "privateKeyFile");
 		
 		// process
 		
@@ -99,21 +110,43 @@ public final class git
 		System.out.println("Cloning from " + uri);
 		
 		CloneCommand c = new CloneCommand();
-		c.setURI(uri);
-		c.setCloneSubmodules(true);
+		
+		if (pathToPrivateKey != null) {
+					 
+			 if (uri.startsWith("http")) {
+				 String[] parts = wx.packages.manager._priv.tools.splitUri(uri);
+				 String owner = parts[0];
+			     repo = parts[1];
+			     
+			     uri = "git@github.com:" + owner + "/" + repo + ".git";
+			     
+				 c.setURI(uri);
+		
+				System.out.println("Nope, now cloning from " + uri);
+			 } else {
+				c.setURI(uri);
+			 }
+			 
+			 c.setTransportConfigCallback(sshCallback(pathToPrivateKey));
+		
+		} else if (user != null && password != null) {
+			c.setURI(uri);
+			c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(user, password));
+		} else {
+			c.setURI(uri);
+		}
+		
+		//c.setCloneSubmodules(true);
 		
 		if (tag != null) {
 			c.setBranch(tag);
 		}
 		
-		
-		if (user != null && password != null)
-			c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(user, password));
-		
 		c.setDirectory(localDir);
 		
 		try {
 			c.call();
+						
 		} catch (InvalidRemoteException e) {
 			e.printStackTrace();
 			throw new ServiceException("Invalid GIT source: " + e.getMessage());
@@ -127,49 +160,6 @@ public final class git
 			e.printStackTrace();
 			throw new ServiceException("Got an exception from GIT API: " + e.getMessage());
 		}
-		
-		try {
-			Git git = Git.open(localDir);
-			
-			TagCommand t = git.tag();
-			
-			
-			if (t.isSigned()) {
-				System.out.println("tag " + tag + " is signed");
-				
-				System.out.println("name is " + t.getName());
-				System.out.println("key is " + t.getSigningKey());
-				
-				if (t.getObjectId() != null)
-					System.out.println("object name is " + t.getObjectId().getName());
-			} else {
-				System.out.println("tag " + tag + " is not signed");
-				
-				System.out.println("name is " + t.getName());
-				System.out.println("key is " + t.getSigningKey());
-				
-				if (t.getObjectId() != null)
-					System.out.println("object name is " + t.getObjectId().getName());
-			}
-			
-			Repository r = git.getRepository();
-			
-			StoredConfig config = r.getConfig();
-			
-			config.getSections().forEach(s -> {
-				System.out.println("section " + s);
-		
-				config.getNames(s).forEach(n -> {
-					System.out.println("name " + n);
-				});
-			});
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		
 		// pipeline out
 		
@@ -255,6 +245,39 @@ public final class git
 	}
 
 	// --- <<IS-START-SHARED>> ---
+	
+	private static TransportConfigCallback sshCallback(String pathToPrivateKey) {
+	
+		return new TransportConfigCallback() {
+           
+			@Override
+			public void configure(Transport transport) {
+				SshTransport sshTransport = (SshTransport) transport;
+                sshTransport.setSshSessionFactory(getSSHConfig(pathToPrivateKey));
+				
+			}
+        };
+	}
+	
+	private static JschConfigSessionFactory getSSHConfig(String pathToPrivateKey) {
+		
+		return new JschConfigSessionFactory() {
+			
+			@Override
+			protected void configure(Host hc, Session session) {
+		        session.setConfig("StrictHostKeyChecking", "yes");
+				super.configure(hc, session);
+			}
+			
+			@Override
+			protected JSch getJSch(Host hc, FS fs) throws JSchException {
+				JSch ch = super.getJSch(hc, fs);
+		        ch.addIdentity(pathToPrivateKey);
+
+				return ch;
+			}
+		};
+	}
 	
 	private static void deleteDir(File file) {
 	    File[] contents = file.listFiles();

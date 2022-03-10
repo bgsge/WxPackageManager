@@ -6,7 +6,22 @@
   <value name="node_nsName">wx.packages.manager._priv.git</value>
   <value name="is_public">false</value>
   <value name="encodeutf8">true</value>
-  <value name="shared">CQoJcHJpdmF0ZSBzdGF0aWMgdm9pZCBkZWxldGVEaXIoRmlsZSBmaWxlKSB7CgkgICAgRmlsZVtd
+  <value name="shared">CQoJcHJpdmF0ZSBzdGF0aWMgVHJhbnNwb3J0Q29uZmlnQ2FsbGJhY2sgc3NoQ2FsbGJhY2soU3Ry
+aW5nIHBhdGhUb1ByaXZhdGVLZXkpIHsKCQoJCXJldHVybiBuZXcgVHJhbnNwb3J0Q29uZmlnQ2Fs
+bGJhY2soKSB7CiAgICAgICAgICAgCgkJCUBPdmVycmlkZQoJCQlwdWJsaWMgdm9pZCBjb25maWd1
+cmUoVHJhbnNwb3J0IHRyYW5zcG9ydCkgewoJCQkJU3NoVHJhbnNwb3J0IHNzaFRyYW5zcG9ydCA9
+IChTc2hUcmFuc3BvcnQpIHRyYW5zcG9ydDsKICAgICAgICAgICAgICAgIHNzaFRyYW5zcG9ydC5z
+ZXRTc2hTZXNzaW9uRmFjdG9yeShnZXRTU0hDb25maWcocGF0aFRvUHJpdmF0ZUtleSkpOwoJCQkJ
+CgkJCX0KICAgICAgICB9OwoJfQoJCglwcml2YXRlIHN0YXRpYyBKc2NoQ29uZmlnU2Vzc2lvbkZh
+Y3RvcnkgZ2V0U1NIQ29uZmlnKFN0cmluZyBwYXRoVG9Qcml2YXRlS2V5KSB7CgkJCgkJcmV0dXJu
+IG5ldyBKc2NoQ29uZmlnU2Vzc2lvbkZhY3RvcnkoKSB7CgkJCQoJCQlAT3ZlcnJpZGUKCQkJcHJv
+dGVjdGVkIHZvaWQgY29uZmlndXJlKEhvc3QgaGMsIFNlc3Npb24gc2Vzc2lvbikgewoJCSAgICAg
+ICAgc2Vzc2lvbi5zZXRDb25maWcoIlN0cmljdEhvc3RLZXlDaGVja2luZyIsICJ5ZXMiKTsKCQkJ
+CXN1cGVyLmNvbmZpZ3VyZShoYywgc2Vzc2lvbik7CgkJCX0KCQkJCgkJCUBPdmVycmlkZQoJCQlw
+cm90ZWN0ZWQgSlNjaCBnZXRKU2NoKEhvc3QgaGMsIEZTIGZzKSB0aHJvd3MgSlNjaEV4Y2VwdGlv
+biB7CgkJCQlKU2NoIGNoID0gc3VwZXIuZ2V0SlNjaChoYywgZnMpOwoJCSAgICAgICAgY2guYWRk
+SWRlbnRpdHkocGF0aFRvUHJpdmF0ZUtleSk7CgoJCQkJcmV0dXJuIGNoOwoJCQl9CgkJfTsKCX0K
+CQoJcHJpdmF0ZSBzdGF0aWMgdm9pZCBkZWxldGVEaXIoRmlsZSBmaWxlKSB7CgkgICAgRmlsZVtd
 IGNvbnRlbnRzID0gZmlsZS5saXN0RmlsZXMoKTsKCSAgICBpZiAoY29udGVudHMgIT0gbnVsbCkg
 ewoJICAgICAgICBmb3IgKEZpbGUgZiA6IGNvbnRlbnRzKSB7CgkgICAgICAgICAgICBpZiAoISBG
 aWxlcy5pc1N5bWJvbGljTGluayhmLnRvUGF0aCgpKSkgewoJICAgICAgICAgICAgICAgIGRlbGV0
@@ -16,6 +31,10 @@ ZSgpOwoJfQ==</value>
   <array name="implements" type="value" depth="1">
   </array>
   <array name="imports" type="value" depth="1">
+    <value>com.jcraft.jsch.IdentityRepository</value>
+    <value>com.jcraft.jsch.JSch</value>
+    <value>com.jcraft.jsch.JSchException</value>
+    <value>com.jcraft.jsch.Session</value>
     <value>java.io.File</value>
     <value>java.io.IOException</value>
     <value>java.nio.file.Files</value>
@@ -26,6 +45,7 @@ ZSgpOwoJfQ==</value>
     <value>org.eclipse.jgit.api.Git</value>
     <value>org.eclipse.jgit.api.ListTagCommand</value>
     <value>org.eclipse.jgit.api.TagCommand</value>
+    <value>org.eclipse.jgit.api.TransportConfigCallback</value>
     <value>org.eclipse.jgit.api.errors.GitAPIException</value>
     <value>org.eclipse.jgit.api.errors.InvalidRemoteException</value>
     <value>org.eclipse.jgit.api.errors.JGitInternalException</value>
@@ -39,6 +59,12 @@ ZSgpOwoJfQ==</value>
     <value>org.eclipse.jgit.lib.ReflogReader</value>
     <value>org.eclipse.jgit.lib.Repository</value>
     <value>org.eclipse.jgit.lib.StoredConfig</value>
+    <value>org.eclipse.jgit.transport.SshSessionFactory</value>
+    <value>org.eclipse.jgit.transport.SshTransport</value>
+    <value>org.eclipse.jgit.transport.Transport</value>
     <value>org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider</value>
+    <value>org.eclipse.jgit.transport.ssh.jsch.JschConfigSessionFactory</value>
+    <value>org.eclipse.jgit.transport.ssh.jsch.OpenSshConfig.Host</value>
+    <value>org.eclipse.jgit.util.FS</value>
   </array>
 </Values>

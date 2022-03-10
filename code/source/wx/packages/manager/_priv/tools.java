@@ -7,7 +7,21 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import com.softwareag.is.dynamicvariables.DynamicVariablesEncryptor;
 // --- <<IS-END-IMPORTS>> ---
@@ -185,6 +199,77 @@ public final class tools
 
 
 
+	public static final void movePackagesToTop (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(movePackagesToTop)>> ---
+		// @sigtype java 3.5
+		// [i] field:1:required packages
+		// [i] field:0:required dir
+		IDataCursor c = pipeline.getCursor();
+		String packages[] = IDataUtil.getStringArray(c, "packages");
+		String dir = IDataUtil.getString(c, "dir");
+		c.destroy();
+		
+		// process
+		
+		String repDir = new File(new File(dir).getParent(), new File(dir).getName() + "_copy").getAbsolutePath();
+		
+		if (packages.length > 1) {
+			try {
+				Files.createDirectory(Path.of(repDir));
+			} catch (IOException e) {
+				throw new ServiceException(e);
+			}
+		}
+		
+		for (String p: packages) {
+			
+			String filePath = findPath(dir,  p);
+			
+			if (filePath != null) {
+				if (packages.length == 1) {
+					// make package rootdir
+					
+					try {
+						Files.move(Path.of(filePath), Path.of(repDir), StandardCopyOption.REPLACE_EXISTING);
+					} catch (IOException e) {
+						throw new ServiceException(e);
+					}
+					
+				} else if (!new File(filePath).getParent().equals(dir)) {
+					// more than one package so move it to directly under dir_copy
+					
+					try {
+						Files.move(Path.of(filePath), Path.of(repDir, p), StandardCopyOption.REPLACE_EXISTING);
+					} catch (IOException e) {
+						throw new ServiceException(e);
+					}
+				}
+			}
+		}
+		
+		if (new File(repDir).exists()) {
+			try {
+				System.out.println("deleting original dir " + dir);
+				
+				deleteFiles(new File(dir));
+				Files.delete(Path.of(dir));
+				
+				System.out.println("renaming " + repDir + " to " + dir);
+				
+				Files.move(Path.of(repDir), Path.of(dir), StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				throw new ServiceException(e);
+			}	
+		}
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void packageCount (IData pipeline)
         throws ServiceException
 	{
@@ -234,7 +319,7 @@ public final class tools
 		
 		for (String key : _packageCounter.keySet()) {
 			String registry = key.substring(0, key.indexOf("-"));
-			String packageName = key.substring(key.indexOf("-"));
+			String packageName = key.substring(key.indexOf("-")+1);
 			
 			IData count = IDataFactory.create();
 			IDataCursor cc = count.getCursor();
@@ -251,8 +336,65 @@ public final class tools
 		// pipeline out
 		
 		IDataCursor c = pipeline.getCursor();
-		IDataUtil.put(c, "counts", counts);
+		IDataUtil.put(c, "counts", counts.toArray(new IData[counts.size()]));
 		c.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void padDaysInDownloadHistory (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(padDaysInDownloadHistory)>> ---
+		// @sigtype java 3.5
+		// [i] record:1:required results
+		// [i] - object:0:required TRACK_DATE
+		// [i] - object:0:required DOWNLOAD_COUNT
+		// [o] record:1:required paddedResults
+		// [o] - field:0:required label
+		// [o] - object:0:required value
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();	
+		IData[] results = IDataUtil.getIDataArray(pipelineCursor, "results");
+		pipelineCursor.destroy();
+		
+		// process
+		
+		ArrayList<IData> paddedResults = new ArrayList<IData>();
+		
+		for(int i = 0; i < results.length; i++) {
+		
+			IDataCursor c = results[i].getCursor();
+			Date date = (Date) IDataUtil.get(c, "TRACK_DATE");
+			int v = IDataUtil.getInt(c, "DOWNLOAD_COUNT", 0);
+			c.destroy();
+			
+			paddedResults.add(makeValue(date, v));
+			
+			if (i+1 < results.length) {
+				c = results[i+1].getCursor();
+				Date nextDate = (Date) IDataUtil.get(c, "TRACK_DATE");
+				c.destroy();
+				
+				
+				int numDays = Period.between(convertDateToLocalDate(date), convertDateToLocalDate(nextDate)).getDays();
+				
+				for (int z = 0; z < numDays-1; z++) {
+					date = Date.from(date.toInstant().plus(1, ChronoUnit.DAYS));
+					
+					paddedResults.add(makeValue(date, 0));
+				}
+			}			
+		}
+		
+		// paddedResults
+		
+		IDataUtil.put(pipelineCursor, "paddedResults", paddedResults.toArray(new IData[paddedResults.size()]));
+		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
                 
@@ -319,17 +461,87 @@ public final class tools
 		
 		if (url != null) {
 		
-			// https://github.com/SoftwareAG/wm-is-client.git
-			
-			repo = url.substring(url.lastIndexOf("/")+1, url.length() - 4);
-			owner = url.substring(0, url.length() - (repo.length() + 5));
-			owner = owner.substring(owner.lastIndexOf("/")+1);
-			
+			String[] parts = splitUri(url);
+			owner = parts[0];
+			repo = parts[1];
 		}
+		
 		// pipeline out
 		
 		IDataUtil.put(pipelineCursor, "owner", owner);
 		IDataUtil.put(pipelineCursor, "repo", repo);
+		pipelineCursor.destroy();
+		
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void splitUsers (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(splitUsers)>> ---
+		// @sigtype java 3.5
+		// [i] record:1:required currentUsers
+		// [i] - field:0:required USER
+		// [i] field:1:required newUsers
+		// [o] field:1:required usersToAdd
+		// [o] field:1:required usersToRemove
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		IData[]	currentUsers = IDataUtil.getIDataArray(pipelineCursor, "currentUsers");
+		String[] newUsers = IDataUtil.getStringArray(pipelineCursor, "newUsers");
+		
+		// process
+		
+		ArrayList<String> usersToAdd = new ArrayList<String>();
+		ArrayList<String> usersToRemove = new ArrayList<String>();
+		
+		if ( currentUsers != null)
+		{
+			for (int i = 0; i < currentUsers.length; i++ )
+			{
+				String user = grabUser(currentUsers[i]);
+				
+				boolean found = false;
+				for(int z = 0; z < newUsers.length; z++) {
+					if (newUsers[z].equals(user)) {
+						found = true;
+						break;
+					}
+				}
+				
+				if (!found) {
+					usersToRemove.add(user);
+				}
+			}
+			
+			for(int i = 0; i < newUsers.length; i++) {
+				boolean found = false;
+				for(int z = 0; z < currentUsers.length; z++) {
+		
+					String user = grabUser(currentUsers[z]);
+		
+					if (newUsers[i].equals(user)) {
+						found = true;
+						break;
+					}
+				}
+				
+				if (!found) {
+					usersToAdd.add(newUsers[i]);
+				}
+			}
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "usersToAdd", usersToAdd.toArray(new String[usersToAdd.size()]));
+		IDataUtil.put(pipelineCursor, "usersToRemove", usersToRemove.toArray(new String[usersToRemove.size()]));
 		pipelineCursor.destroy();
 		
 			
@@ -345,6 +557,95 @@ public final class tools
 	private static String _defaultRegistry = "default";
 	
 	private static HashMap<String, Integer> _packageCounter = new HashMap<String, Integer>();
+	
+	public static IData makeValue(Date date, int v) {
+	
+		IData value = IDataFactory.create();
+		
+		IDataCursor paddedResultsCursor = value.getCursor();
+		IDataUtil.put(paddedResultsCursor, "label", formatDate(date));
+		IDataUtil.put(paddedResultsCursor, "value", v);
+		paddedResultsCursor.destroy();
+		
+		return value;
+	}
+	
+	public static LocalDate convertDateToLocalDate(Date date) {
+	
+		return Instant.ofEpochMilli(date.getTime())
+	      .atZone(ZoneId.systemDefault())
+	      .toLocalDate();
+	}
+	
+	public static final String TIMESTAMP_PATTERN = "dd-MM-yyyy";
+	public static final DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern(TIMESTAMP_PATTERN);
+	
+	public static String formatDate(Date date) {
+		
+		return FOMATTER.format(convertDateToLocalDate(date));
+	}
+	
+	public static String[] splitUri(String url) {
+	
+		// https://github.com/SoftwareAG/wm-is-client.git
+		
+		String repo = url.substring(url.lastIndexOf("/")+1, url.length() - 4);
+		String owner = url.substring(0, url.length() - (repo.length() + 5));
+					
+		if (owner.indexOf("/") != -1) {
+			owner = owner.substring(owner.lastIndexOf("/")+1);
+		} else if (owner.indexOf(":") != -1) {
+			owner = owner.substring(owner.indexOf(":")+1);
+		}
+		
+		String[] out = new String[2];
+		out[0] = owner;
+		out[1] = repo;
+		
+		return out;
+	}
+	
+	private static String grabUser(IData currentUser) {
+		
+		IDataCursor currentUsersCursor = currentUser.getCursor();
+		String user = IDataUtil.getString(currentUsersCursor, "USER");
+		currentUsersCursor.destroy();
+		
+		return user;
+	}
+	
+	
+	private static String findPath(String basePath, String file) {
+	    
+		File[] files = new File(basePath).listFiles();
+		String foundPath;
+	
+		for (int i = 0; i < files.length; i++) {
+						
+			if (file.equals(files[i].getName())) {
+				return files[i].getAbsolutePath();
+			} else if (files[i].isDirectory()) {
+				foundPath = findPath(files[i].getAbsolutePath(), file);
+				
+				if (foundPath != null) {
+					return foundPath;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	private static void deleteFiles(File dirPath) {
+	      File filesList[] = dirPath.listFiles();
+	      for(File file : filesList) {
+	         if(file.isDirectory()) {
+	        	 deleteFiles(file); 
+	         }
+	         
+	         file.delete();
+	      }
+	   }
 	// --- <<IS-END-SHARED>> ---
 }
 

@@ -117,7 +117,7 @@
   </record>
   <value name="node_comment">## List Packages
 lists all packages for the given registry, category and filter. All inputs are optional, if no registry is given assumes that the default registry should be queried.
-The list tops out at a maximum of 50 rows, the user should either apply a category or filter if the list is too long.
+The list tops out at a maximum of 50 rows, the user should either apply a category or filter if the list is too long. Results our ordered by download count descending.
 
 NOTE: private registries will only list packages to which the user has been granted access, including administrators. The only exception being the special user
 'Administrator' who can see all packages regardless of access permissions.
@@ -127,7 +127,7 @@ This method can be called anoymously, but will only return packages for public r
 **INPUT**
 registry - (Optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
 category - (Optional) The category of the packages to list (categories should be prefefined by registry owner).
-filter - (Optional) can be used to filter the package name to shorten results.
+filter - (Optional) can be used to filter against the package name or description to shorten results.
 
 **OUTPUT**
 packages - list of package summary including the name, category, description, registration date, searchTags and totalDownloads.</value>

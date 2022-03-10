@@ -855,7 +855,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">PACKAGE_NAME</value>
+            <value name="field_name">FILTER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -1075,10 +1075,10 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/PACKAGE_NAME;1;0">
+<MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/getPackagesInput;2;0/REGISTRY_NAME;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/getPackagesInput;2;0/REGISTRY_NAME;1;0">
+<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/FILTER;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -1154,7 +1154,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">PACKAGE_NAME</value>
+            <value name="field_name">FILTER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -1363,13 +1363,13 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/PACKAGE_NAME;1;0">
-</MAPCOPY>
-
 <MAPCOPY FROM="/category;1;0" TO="/getPackagesInput;2;0/CATEGORY;1;0">
 </MAPCOPY>
 
 <MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/getPackagesInput;2;0/REGISTRY_NAME;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/FILTER;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -1930,7 +1930,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">PACKAGE_NAME</value>
+            <value name="field_name">FILTER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -2189,13 +2189,13 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/PACKAGE_NAME;1;0">
-</MAPCOPY>
-
 <MAPCOPY FROM="/userID;1;0" TO="/getPackagesInput;2;0/USER;1;0">
 </MAPCOPY>
 
 <MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/getPackagesInput;2;0/REGISTRY_NAME;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/FILTER;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -2271,7 +2271,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">USER</value>
+            <value name="field_name">FILTER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -2282,7 +2282,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">PACKAGE_NAME</value>
+            <value name="field_name">USER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -2519,9 +2519,6 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/PACKAGE_NAME;1;0">
-</MAPCOPY>
-
 <MAPCOPY FROM="/category;1;0" TO="/getPackagesInput;2;0/CATEGORY;1;0">
 </MAPCOPY>
 
@@ -2529,6 +2526,9 @@
 </MAPCOPY>
 
 <MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/getPackagesInput;2;0/REGISTRY_NAME;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/filter;1;0" TO="/getPackagesInput;2;0/FILTER;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -3164,6 +3164,29 @@
                 <value name="node_type">unknown</value>
                 <value name="node_subtype">unknown</value>
                 <value name="is_public">false</value>
+                <value name="field_name">TOTAL_COUNT</value>
+                <value name="field_type">string</value>
+                <value name="field_dim">0</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">unknown</value>
+                <value name="node_subtype">unknown</value>
+                <value name="is_public">false</value>
+                <value name="field_name">TOTAL_COUNT</value>
+                <value name="field_type">object</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">java.lang.Integer</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">unknown</value>
+                <value name="node_subtype">unknown</value>
+                <value name="is_public">false</value>
                 <value name="field_name">TAGS</value>
                 <value name="field_type">string</value>
                 <value name="field_dim">0</value>
@@ -3576,7 +3599,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">PACKAGE_NAME</value>
+            <value name="field_name">FILTER</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>

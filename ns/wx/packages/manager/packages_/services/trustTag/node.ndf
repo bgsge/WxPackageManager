@@ -134,6 +134,8 @@
 Flags that the given tag is to be trusted for use in this registry. The signature ensures that a developer cannot replace the tag after this verification process has completed i.e. 
 the signature is recorded and can compared against the git repository when downloading to check that it hasn't changed.
 
+Developers can still force download packages using the query params ?ignoreVerification=true&amp;ignoreSignatureMatch=true if required
+
 *NOTE:* You will need administrator level permissions to use this method.
 
 **INPUT**
