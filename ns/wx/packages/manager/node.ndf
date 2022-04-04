@@ -3179,8 +3179,8 @@ success - true if package was registered</value>
               <null name="definitionName"/>
               <Boolean name="includeInRad">true</Boolean>
             </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
+            <record name="packageNname" javaclass="com.wm.util.Values">
+              <value name="name">packageNname</value>
               <value name="source">FORMDATA</value>
               <value name="type">STRING</value>
               <null name="description"/>

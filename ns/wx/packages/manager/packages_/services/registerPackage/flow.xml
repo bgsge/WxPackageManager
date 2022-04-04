@@ -20,6 +20,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -54,7 +55,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">name</value>
+        <value name="field_name">packageNname</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -2042,6 +2043,7 @@
     <value name="field_name">createPackageInput</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -2053,6 +2055,7 @@
         <value name="field_name">createPackageInput</value>
         <value name="field_type">record</value>
         <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
@@ -2064,6 +2067,7 @@
             <value name="field_name">overrideCredentials</value>
             <value name="field_type">record</value>
             <value name="field_dim">0</value>
+            <value name="wrapper_type">IData</value>
             <value name="nillable">true</value>
             <value name="form_qualified">false</value>
             <value name="is_global">false</value>
@@ -2153,9 +2157,8 @@
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
             <value name="field_name">SRC_PRIVATE_REPO</value>
-            <value name="field_type">object</value>
+            <value name="field_type">string</value>
             <value name="field_dim">0</value>
-            <value name="wrapper_type">java.lang.Boolean</value>
             <value name="nillable">true</value>
             <value name="form_qualified">false</value>
             <value name="is_global">false</value>
@@ -2165,9 +2168,8 @@
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
             <value name="field_name">IS_VISIBLE</value>
-            <value name="field_type">object</value>
+            <value name="field_type">string</value>
             <value name="field_dim">0</value>
-            <value name="wrapper_type">java.lang.Boolean</value>
             <value name="nillable">true</value>
             <value name="form_qualified">false</value>
             <value name="is_global">false</value>
@@ -2176,7 +2178,7 @@
             <value name="node_type">unknown</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">ASSET_TYPE</value>
+            <value name="field_name">HOMEPAGE_URL</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -2188,17 +2190,6 @@
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
             <value name="field_name">SRC_PATH</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
-          </record>
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
-            <value name="field_name">HOME_PAGE</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <value name="nillable">true</value>
@@ -2234,6 +2225,7 @@
     <value name="is_public">false</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
+    <value name="wrapper_type">IData</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -2950,7 +2942,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">name</value>
+        <value name="field_name">packageNname</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -3271,7 +3263,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/name;1;0" TO="/createTagInput;2;0/PACKAGE_NAME;1;0">
+<MAPCOPY FROM="/packageNname;1;0" TO="/createTagInput;2;0/PACKAGE_NAME;1;0">
 </MAPCOPY>
 
 <MAPCOPY FROM="/trustedTag;1;0" TO="/createTagInput;2;0/TAG;1;0">
@@ -3960,7 +3952,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">name</value>
+        <value name="field_name">packageNname</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -4327,7 +4319,7 @@
 <MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/registry;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/name;1;0" TO="/packageName;1;0">
+<MAPCOPY FROM="/packageNname;1;0" TO="/packageName;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -4497,7 +4489,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">name</value>
+        <value name="field_name">packageNname</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -4835,7 +4827,7 @@
 <MAPCOPY FROM="/registryDetails;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/registry;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/name;1;0" TO="/packageName;1;0">
+<MAPCOPY FROM="/packageNname;1;0" TO="/packageName;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -5979,7 +5971,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">name</value>
+        <value name="field_name">packageNname</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <array name="field_options" type="value" depth="1">
@@ -6616,7 +6608,7 @@
 <MAPDELETE FIELD="/registryId;1;0">
 </MAPDELETE>
 
-<MAPDELETE FIELD="/name;1;0">
+<MAPDELETE FIELD="/packageNname;1;0">
 </MAPDELETE>
 
 <MAPDELETE FIELD="/category;1;0">
