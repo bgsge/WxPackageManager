@@ -26,7 +26,7 @@ $ curl "http://localhost:5555/rad/wx.packages:manager/packages?registry=default"
  
 Full API documentation is available here online 
  
-http://localhost:5555/WxPackageManager/api-docs
+http://localhost:5555/WxPackageManager/api
 
 Usage guide here
 
