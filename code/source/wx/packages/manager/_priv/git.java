@@ -7,15 +7,14 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
-import com.jcraft.jsch.IdentityRepository;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
@@ -27,6 +26,7 @@ import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.JGitInternalException;
 import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.attributes.AttributesNodeProvider;
+import org.eclipse.jgit.errors.UnsupportedCredentialItem;
 import org.eclipse.jgit.lib.BaseRepositoryBuilder;
 import org.eclipse.jgit.lib.ObjectDatabase;
 import org.eclipse.jgit.lib.ObjectId;
@@ -35,12 +35,14 @@ import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.ReflogReader;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
+import org.eclipse.jgit.transport.CredentialItem;
+import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.SshSessionFactory;
 import org.eclipse.jgit.transport.SshTransport;
 import org.eclipse.jgit.transport.Transport;
+import org.eclipse.jgit.transport.URIish;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-import org.eclipse.jgit.transport.ssh.jsch.JschConfigSessionFactory;
-import org.eclipse.jgit.transport.ssh.jsch.OpenSshConfig.Host;
+import org.eclipse.jgit.transport.sshd.SshdSessionFactory;
 import org.eclipse.jgit.util.FS;
 // --- <<IS-END-IMPORTS>> ---
 
@@ -72,6 +74,7 @@ public final class git
 		// [i] field:0:optional password
 		// [i] field:0:required localDir
 		// [i] field:0:optional privateKeyFile
+		// [i] field:0:optional passPhrase
 		// pipeline in
 		
 		IDataCursor cursor = pipeline.getCursor();
@@ -82,6 +85,7 @@ public final class git
 		String password = IDataUtil.getString(cursor, "password");		
 		String localDirStr = IDataUtil.getString(cursor, "localDir");
 		String pathToPrivateKey = IDataUtil.getString(cursor, "privateKeyFile");
+		String passPhrase = IDataUtil.getString(cursor, "passPhrase");
 		
 		// process
 		
@@ -127,7 +131,20 @@ public final class git
 				c.setURI(uri);
 			 }
 			 
-			 c.setTransportConfigCallback(sshCallback(pathToPrivateKey));
+			 //c.setTransportConfigCallback(sshCallback(pathToPrivateKey));
+			 
+			 c.setTransportConfigCallback(
+					 transport -> {
+					   if(transport instanceof SshTransport) {
+					     SshTransport sshTransport = (SshTransport) transport;
+					     // Set passphrase using a CustomCredentialsProvider
+					     sshTransport.setCredentialsProvider(new CustomCredentialProvider(passPhrase));
+					     // Provide private key to `CustomSshSessionFactory`
+					     SshSessionFactory sshFactory = new CustomSshSessionFactory(pathToPrivateKey);
+					     sshTransport.setSshSessionFactory(sshFactory);
+		
+					   }
+			});
 		
 		} else if (user != null && password != null) {
 			c.setURI(uri);
@@ -245,51 +262,128 @@ public final class git
 	}
 
 	// --- <<IS-START-SHARED>> ---
-	
-	private static TransportConfigCallback sshCallback(String pathToPrivateKey) {
-	
-		return new TransportConfigCallback() {
-           
-			@Override
-			public void configure(Transport transport) {
-				SshTransport sshTransport = (SshTransport) transport;
-                sshTransport.setSshSessionFactory(getSSHConfig(pathToPrivateKey));
-				
-			}
-        };
-	}
-	
-	private static JschConfigSessionFactory getSSHConfig(String pathToPrivateKey) {
 		
-		return new JschConfigSessionFactory() {
-			
-			@Override
-			protected void configure(Host hc, Session session) {
-		        session.setConfig("StrictHostKeyChecking", "yes");
-				super.configure(hc, session);
-			}
-			
-			@Override
-			protected JSch getJSch(Host hc, FS fs) throws JSchException {
-				JSch ch = super.getJSch(hc, fs);
-		        ch.addIdentity(pathToPrivateKey);
-
-				return ch;
-			}
-		};
+	public static final class CustomSshSessionFactory extends SshdSessionFactory {
+	
+		
+	    private final Path privateKeyFile;
+	
+	    public CustomSshSessionFactory(String privateKeyFile) {
+	        this.privateKeyFile = Path.of(privateKeyFile);
+	    }
+	
+	    @Override
+	    public File getSshDirectory() {
+	        
+	    	return privateKeyFile.getParent().toFile();
+	    }
+	
+	// Return paths to private key files
+	    @Override
+	    protected List<Path> getDefaultIdentities(File sshDir) {
+	        
+	    	return Collections.singletonList(privateKeyFile);
+	    }
+	
 	}
 	
-	private static void deleteDir(File file) {
-	    File[] contents = file.listFiles();
-	    if (contents != null) {
-	        for (File f : contents) {
-	            if (! Files.isSymbolicLink(f.toPath())) {
-	                deleteDir(f);
+	public static class CustomCredentialProvider extends CredentialsProvider {
+		
+	    private final String passphrase;
+	
+	    public CustomCredentialProvider(String passphrase) {
+	        this.passphrase = passphrase;
+	    }
+	
+	    @Override
+	    public boolean isInteractive() {
+	        // Set this according to your requirement
+	        return false;
+	    }
+	
+	    @Override
+	    public boolean supports(CredentialItem... items) {
+	        // Set this according to your requirement
+	        return true;
+	    }
+	
+	    @Override
+	    public boolean get(URIish uri, CredentialItem... items)
+	            throws UnsupportedCredentialItem {
+	
+	        for (CredentialItem item : items) {
+	            if (item instanceof CredentialItem.InformationalMessage) {
+	                continue;
+	            }
+	            if (item instanceof CredentialItem.YesNoType) {
+	                // Set this according to your requirement
+	                ((CredentialItem.YesNoType) item).setValue(true);
+	            } else if (item instanceof CredentialItem.CharArrayType) {
+	                if (passphrase != null) {
+	                    ((CredentialItem.CharArrayType) item)
+	                            .setValue(passphrase.toCharArray());
+	                } else {
+	                    return false;
+	                }
+	            } else if (item instanceof CredentialItem.StringType) {
+	                if (passphrase != null) {
+	                    ((CredentialItem.StringType) item)
+	                            .setValue(passphrase);
+	                } else {
+	                    return false;
+	                }
+	            } else {
+	                return false;
 	            }
 	        }
+	        return true;
 	    }
-	    file.delete();
 	}
+	
+		/*private static TransportConfigCallback sshCallback(String pathToPrivateKey) {
+		
+			return new TransportConfigCallback() {
+	           
+				@Override
+				public void configure(Transport transport) {
+					SshTransport sshTransport = (SshTransport) transport;
+	                sshTransport.setSshSessionFactory(getSSHConfig(pathToPrivateKey));
+					
+				}
+	        };
+		}
+		
+		private static JschConfigSessionFactory getSSHConfig(String pathToPrivateKey) {
+			
+			return new JschConfigSessionFactory() {
+				
+				@Override
+				protected void configure(Host hc, Session session) {
+			        session.setConfig("StrictHostKeyChecking", "yes");
+					super.configure(hc, session);
+				}
+				
+				@Override
+				protected JSch getJSch(Host hc, FS fs) throws JSchException {
+					JSch ch = super.getJSch(hc, fs);
+			        ch.addIdentity(pathToPrivateKey);
+	
+					return ch;
+				}
+			};
+		}*/
+		
+		private static void deleteDir(File file) {
+		    File[] contents = file.listFiles();
+		    if (contents != null) {
+		        for (File f : contents) {
+		            if (! Files.isSymbolicLink(f.toPath())) {
+		                deleteDir(f);
+		            }
+		        }
+		    }
+		    file.delete();
+		}
 	// --- <<IS-END-SHARED>> ---
 }
 

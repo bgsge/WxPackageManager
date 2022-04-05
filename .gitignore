@@ -1,6 +1,3 @@
 .DS_Store
-resources/builds/*
-resources/configuration/*
-resources/files/properties
-resources/files/licenses
+resources/*
 *.xml.bak

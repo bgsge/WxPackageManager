@@ -231,7 +231,7 @@ thrown if either a registry already exists for the given name or a required inpu
     <value>PUT</value>
     <value>PATCH</value>
   </array>
-  <value name="pipeline_option">3</value>
+  <value name="pipeline_option">2</value>
   <null name="originURI"/>
   <value name="modifiable">true</value>
   <value name="is_public">false</value>
