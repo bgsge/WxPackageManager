@@ -55,6 +55,25 @@
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
         </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">user</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
       </array>
       <value name="modifiable">true</value>
     </record>
@@ -90,15 +109,23 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">## Remove package
+  <value name="node_comment">## Sync user deploy with git
 
-Removes the given package from the given registry.
+This service generate a public/private key pair and uploads the public key to the git repository to ensure that a private git repositories can be accessed by sharing a ssh rsa public key as a deploy key. 
+The private key is stored locally and provided to any third party client if authenticated agaist the given user. This will ensure that they can pull the code with something like the following
+if they write the key to a local file called github_rsa.
 
-*NOTE:* You will need administrator level permissions to use this method.
+```
+$ git clone git@github.com:johnpcarter/wm.git --config core.sshCommand="ssh -i github_rsa"
+```
+
+*NOTE:* You will need administrator level permissions to use this method. Also the above command will only read access to the git repository and does not provide any collaboration features.
+
 
 **INPUT**
 registry - (Optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
-name - the name of the package
+packageName - the name of the package
+user - the id of the local user to be synced with git
 
 ## OUTPUT
 success - true if successful</value>

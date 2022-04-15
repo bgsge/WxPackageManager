@@ -346,7 +346,7 @@ thrown if associated git repository is private the current user does not have su
     <value>PUT</value>
     <value>PATCH</value>
   </array>
-  <value name="pipeline_option">1</value>
+  <value name="pipeline_option">2</value>
   <null name="originURI"/>
   <value name="modifiable">true</value>
   <value name="is_public">false</value>

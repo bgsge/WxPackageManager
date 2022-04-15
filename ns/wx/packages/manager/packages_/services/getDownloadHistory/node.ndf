@@ -131,7 +131,16 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## Get package details
+
+Returns the number of downloads for the given package based over time
+
+## INPUT
+registry - registry to query, uses default if not provided.
+packageName - the package to be queried.
+
+## OUTPUT
+values - an array of label/value pairs where label is the interval description (e.g. date or time) and value is an integer of the total downloads</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

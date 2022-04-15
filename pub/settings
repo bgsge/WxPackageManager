@@ -7,7 +7,7 @@ document.write(title);
 </script>
 <LINK REL="SHORTCUT ICON" HREF="/favicon.ico">
 </head>
-<frameset rows="100%,*" border=0><frame src="/WxPackageManager/index.html"></frameset>
+<frameset rows="100%,*" border=0><frame src="/WxPackageManager/index.html?goto=settings"></frameset>
 
 <noframes>
 <body>

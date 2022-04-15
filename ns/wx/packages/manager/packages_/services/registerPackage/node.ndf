@@ -166,7 +166,7 @@
           <value name="is_global">false</value>
         </record>
         <record javaclass="com.wm.util.Values">
-          <value name="node_type">unknown</value>
+          <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
@@ -175,27 +175,7 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">sourceUserId</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">unknown</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">sourcePassword</value>
+          <value name="field_name">sourcePath</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
@@ -300,14 +280,30 @@
   </record>
   <value name="node_comment">## Register a new package
 
-Registers a webMethods package and its git repository in the registry. The git credentials need only be provided if the git repository is provided. The credentials will only be associated with the the current user.
-Other developers will have to register their own credentials if they want to be able to download the package.
+Registers a webMethods package and its git repository in the registry. The git credentials need only be provided if the git repository is provided. 
+The credentials will only be associated with the the current user. Other developers will have to register their own credentials if they want to be able to download the package.
+
+The git repo can either represent a proper package i.e. the git root is the package root folder, or it can be used to host more than one package. In which cases the git repo must 
+have a sub-folder with the same name as the package e.g.
+
+.git
+/MyGreatPackage
+/JcPublicTools
+etc.
+
+You will need to specify the input 'sourcePath' if the packages are not in the git root e.g.
+
+.git
+/packages/MyGreatPackage
+/package/JcPublicTools
+
+in which case the sourcePath would be 'packages'.
 
 *NOTE:* You will need administrator level permissions to use this method.
 
 ## INPUT
 registry - (optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
-name - the name of the package
+packageName - the name of the package
 category - category, should be predefined by registry owner
 description -(optional) long description for package
 searchTags - (optional) an array of search keys 
@@ -315,8 +311,7 @@ trustedTag - (optional) a tag that will be trusted for use.
 signatureTag - (optional) provide the signature for the trusted tag (Used to check that the tag doesn't get replaced later)
 sourceUrl - the git repository url for cloning the package.
 sourceIsPrivate - (optional) set to true if the git repository is private.
-sourceUserId - (optional) only required if git repository is provided.
-sourcePassword - (optional) token for above user id to be used to access the repo.
+sourcePath - (optional) specify this if the package is in a sub-directory of the git repo, assumption is that there is a folder with the same name as the package.
 users - an array of users ids that will be allowed to view/download the package (Only applicable for private registries)
 
 ## OUTPUT

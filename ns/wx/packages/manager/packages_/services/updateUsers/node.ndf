@@ -120,7 +120,7 @@ A package can be made visible to all users by setting the list to ['everybody'] 
 
 **INPUT**
 registry - (Optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
-name - the name of the package
+packageName - the name of the package
 users - a complete array of all user id's that are allowed to view this package.
 
 ## OUTPUT
