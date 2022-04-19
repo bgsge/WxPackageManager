@@ -244,6 +244,16 @@
         <record name="GET" javaclass="com.wm.util.Values">
           <value name="operationType">GET</value>
           <value name="nsName">/notifications_GET</value>
+          <value name="description">## List available notifications for logged in user
+
+List all of the registry/package email notifications for the current user.
+
+## INPUT
+registry - (optional) filter notifications for given registry, only applicable for package notifications.
+
+## OUTPUT
+notifications - list of notifications
+</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>wx.packages.manager.notifications_.docTypes:Notification</value>
             <value>/notifications_GET_$response</value>
@@ -297,6 +307,19 @@
         <record name="POST" javaclass="com.wm.util.Values">
           <value name="operationType">POST</value>
           <value name="nsName">/notification_POST</value>
+          <value name="description">## Add Notification
+
+Add email notification for changes to the given package or registry.
+
+## INPUT
+registry - registry of package if package or null if name (below) is a registry
+name - the name of the registry or package on which to receive notifications.
+isPackage - true if name is a package or false if name is a registry
+friendlyName - name to be used in email body
+email - email address to use for notification
+
+## OUTPUT
+success - true if notification added successfully, false if registry or package don't exist or if email already registered for given asset</value>
           <array name="consumes" type="value" depth="1">
             <value>application/x-www-form-urlencoded</value>
           </array>
@@ -400,6 +423,17 @@
         <record name="DELETE" javaclass="com.wm.util.Values">
           <value name="operationType">DELETE</value>
           <value name="nsName">/notification/{name}_DELETE</value>
+          <value name="description">## Remove registry/package notification
+
+Removes the email notification for the given registry or package associated with the current user.
+
+## INPUT
+registry - (optional) - only required if name is for package that is not in the default registry
+name - name of registry or package
+isPackage - true if name is a package, false if a registry
+
+## OUTPUT
+success - true if notification exists and was removed, false if not</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/notification/{name}_DELETE_$response</value>
           </array>
@@ -476,6 +510,15 @@
         <record name="PUT" javaclass="com.wm.util.Values">
           <value name="operationType">PUT</value>
           <value name="nsName">/notification/email/{email}_PUT</value>
+          <value name="description">## Set default email for user
+
+Associates an email address with the given user.
+
+## INPUT
+email
+
+## OUTPUT
+success - true if db updated, false if not</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/notification/email/{email}_PUT_$response</value>
           </array>
@@ -528,6 +571,15 @@
         <record name="GET" javaclass="com.wm.util.Values">
           <value name="operationType">GET</value>
           <value name="nsName">/notification/email_GET</value>
+          <value name="description">## get default email for logged in user
+
+Returns  email address for the given user.
+
+## INPUT
+none
+
+## OUTPUT
+email</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/notification/email_GET_$response</value>
           </array>
@@ -559,6 +611,15 @@
         <record name="DELETE" javaclass="com.wm.util.Values">
           <value name="operationType">DELETE</value>
           <value name="nsName">/notification/email_DELETE</value>
+          <value name="description">## Set default email for user
+
+Associates an email address with the given user.
+
+## INPUT
+email
+
+## OUTPUT
+success - true if db updated, false if not</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/notification/email_DELETE_$response</value>
           </array>

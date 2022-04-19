@@ -53,7 +53,15 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## get default email for logged in user
+
+Returns  email address for the given user.
+
+## INPUT
+none
+
+## OUTPUT
+email</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

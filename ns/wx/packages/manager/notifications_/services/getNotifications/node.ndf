@@ -75,7 +75,16 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## List available notifications for logged in user
+
+List all of the registry/package email notifications for the current user.
+
+## INPUT
+registry - (optional) filter notifications for given registry, only applicable for package notifications.
+
+## OUTPUT
+notifications - list of notifications
+</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

@@ -107,7 +107,17 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## Remove registry/package notification
+
+Removes the email notification for the given registry or package associated with the current user.
+
+## INPUT
+registry - (optional) - only required if name is for package that is not in the default registry
+name - name of registry or package
+isPackage - true if name is a package, false if a registry
+
+## OUTPUT
+success - true if notification exists and was removed, false if not</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

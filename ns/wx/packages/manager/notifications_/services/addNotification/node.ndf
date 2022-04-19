@@ -49,7 +49,19 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## Add Notification
+
+Add email notification for changes to the given package or registry.
+
+## INPUT
+registry - registry of package if package or null if name (below) is a registry
+name - the name of the registry or package on which to receive notifications.
+isPackage - true if name is a package or false if name is a registry
+friendlyName - name to be used in email body
+email - email address to use for notification
+
+## OUTPUT
+success - true if notification added successfully, false if registry or package don't exist or if email already registered for given asset</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

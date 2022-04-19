@@ -71,7 +71,15 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">## Set default email for user
+
+Associates an email address with the given user.
+
+## INPUT
+email
+
+## OUTPUT
+success - true if db updated, false if not</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
