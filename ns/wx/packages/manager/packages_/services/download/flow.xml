@@ -14,6 +14,16 @@
 </MAP>
 </INVOKE>
 
+<BRANCH TIMEOUT="" SWITCH="/isAllowed">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="true" TIMEOUT="" EXIT-ON="FAILURE">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
 <BRANCH TIMEOUT="" SWITCH="/trust">
   <COMMENT></COMMENT>
 
@@ -6251,6 +6261,8 @@
 <MAP MODE="OUTPUT">
 </MAP>
 </INVOKE>
+</SEQUENCE>
+</BRANCH>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
   <COMMENT>cleanup</COMMENT>
