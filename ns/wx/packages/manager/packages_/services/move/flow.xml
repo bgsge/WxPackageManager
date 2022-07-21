@@ -10601,6 +10601,9 @@
 
 <MAPCOPY FROM="/gitPassword;1;0" TO="/gitPassword;1;0">
 </MAPCOPY>
+
+<MAPCOPY FROM="/fromRegistry;4;0;wx.packages.manager.registry_.docTypes:Registry/name;1;0" TO="/registry;1;0">
+</MAPCOPY>
 </MAP>
 
 <MAP MODE="INVOKEOUTPUT">
