@@ -42,6 +42,84 @@ public final class tools
 
 
 
+	public static final void addToArray (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(addToArray)>> ---
+		// @sigtype java 3.5
+		// [i] record:0:required value
+		// [i] - field:0:required @name
+		// [i] - field:0:required *body
+		// [i] record:1:optional inArray
+		// [i] field:0:optional keyName
+		// [i] field:0:optional bodyName
+		// [o] record:1:required outArray
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		IData value = IDataUtil.getIData( pipelineCursor, "value" );
+		
+		String name = null;
+		String body = null;
+		
+		if (value != null) {
+			IDataCursor valueCursor = value.getCursor();
+			name = IDataUtil.getString(valueCursor, "@name");
+			body = IDataUtil.getString(valueCursor, "*body");
+			valueCursor.destroy();
+		}
+		
+		IData[]	inArray = IDataUtil.getIDataArray(pipelineCursor, "inArray");
+		
+		String keyName = IDataUtil.getString(pipelineCursor, "keyName");
+		String bodyName = IDataUtil.getString(pipelineCursor, "bodyName");
+		
+		// process
+		
+		IData[] outArray = inArray;
+		
+		if (name != null) {
+			
+			outArray = new IData[inArray != null ? inArray.length + 1 : 1];
+			
+			if (inArray != null) {
+				for (int i = 0; i < inArray.length; i++) {
+					outArray[i] = inArray[i];
+				}
+			}
+			
+			IData doc = IDataFactory.create();
+			IDataCursor docCursor = doc.getCursor();
+			
+			if (keyName != null) 
+				IDataUtil.put(docCursor, keyName, name);
+			else 
+				IDataUtil.put(docCursor, "name", name);
+			
+			if (bodyName != null)
+				IDataUtil.put(docCursor, bodyName, body);
+			else
+				IDataUtil.put(docCursor, "body", body);
+			
+			docCursor.destroy();
+			
+			outArray[outArray.length-1] = doc;
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "outArray", outArray);
+		pipelineCursor.destroy();
+		
+		
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void countPackage (IData pipeline)
         throws ServiceException
 	{
@@ -542,6 +620,38 @@ public final class tools
 		
 		IDataUtil.put(pipelineCursor, "usersToAdd", usersToAdd.toArray(new String[usersToAdd.size()]));
 		IDataUtil.put(pipelineCursor, "usersToRemove", usersToRemove.toArray(new String[usersToRemove.size()]));
+		pipelineCursor.destroy();
+		
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void truncateStringToNewLine (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(truncateStringToNewLine)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required inString
+		// [o] field:0:required outString
+		// pipeline in
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String inString = IDataUtil.getString(pipelineCursor, "inString");
+		
+		// process
+		
+		String outString = inString;
+		
+		if (outString.indexOf("\n") != -1) {
+			outString = outString.substring(0, outString.indexOf("\n"));
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "outString", outString);
 		pipelineCursor.destroy();
 		
 			
