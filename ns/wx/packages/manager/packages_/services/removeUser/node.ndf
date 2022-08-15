@@ -65,10 +65,9 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">accessToken</value>
+          <value name="field_name">user</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
           <array name="field_options" type="value" depth="1">
           </array>
           <value name="nillable">true</value>
@@ -98,69 +97,36 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">values</value>
-          <value name="field_type">record</value>
-          <value name="field_dim">1</value>
-          <value name="wrapper_type">IData</value>
+          <value name="field_name">success</value>
+          <value name="field_type">object</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">java.lang.Boolean</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
-          <value name="is_soap_array_encoding_used">false</value>
-          <array name="rec_fields" type="record" depth="1">
-            <record javaclass="com.wm.util.Values">
-              <value name="node_type">record</value>
-              <value name="node_subtype">unknown</value>
-              <value name="node_comment"></value>
-              <record name="node_hints" javaclass="com.wm.util.Values">
-                <value name="field_usereditable">true</value>
-                <value name="field_largerEditor">false</value>
-                <value name="field_password">false</value>
-              </record>
-              <value name="is_public">false</value>
-              <value name="field_name">label</value>
-              <value name="field_type">string</value>
-              <value name="field_dim">0</value>
-              <array name="field_options" type="value" depth="1">
-              </array>
-              <value name="nillable">true</value>
-              <value name="form_qualified">false</value>
-              <value name="is_global">false</value>
-            </record>
-            <record javaclass="com.wm.util.Values">
-              <value name="node_type">record</value>
-              <value name="node_subtype">unknown</value>
-              <value name="node_comment"></value>
-              <record name="node_hints" javaclass="com.wm.util.Values">
-                <value name="field_largerEditor">false</value>
-                <value name="field_password">false</value>
-              </record>
-              <value name="is_public">false</value>
-              <value name="field_name">value</value>
-              <value name="field_type">object</value>
-              <value name="field_dim">0</value>
-              <value name="wrapper_type">java.lang.Integer</value>
-              <value name="nillable">true</value>
-              <value name="form_qualified">false</value>
-              <value name="is_global">false</value>
-            </record>
-          </array>
-          <value name="rec_closed">true</value>
-          <value name="modifiable">true</value>
         </record>
       </array>
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">## Get package details
+  <value name="node_comment">## Update users
 
-Returns the number of downloads for the given package based over time
+Private registries require that all users authenticate in order to be able to browse the packages. In addition Administrators can choose to show packages only to certain users
+by using this method.
 
-## INPUT
-registry - registry to query, uses default if not provided.
-packageName - the package to be queried.
+A package can be made visible to all users by setting the list to ['everybody'] and should reference at least one user if it is to not be invisible. The only exception to this is the 
+'Administrator' user which can view all packages regardless permissions. Be aware this applies only to this user and not other admin users.
+
+*NOTE:* You will need administrator level permissions to use this method.
+
+
+**INPUT**
+registry - (Optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
+packageName - the name of the package
+users - a complete array of all user id's that are allowed to view this package.
 
 ## OUTPUT
-values - an array of label/value pairs where label is the interval description (e.g. date or time) and value is an integer of the total downloads</value>
+success - true if successful</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

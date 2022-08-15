@@ -45,7 +45,7 @@
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="urlTemplate">/package/{packageName}</value>
-        <value name="serviceName">wx.packages.manager.packages_.services:remove</value>
+        <value name="serviceName">wx.packages.manager.packages_.services:removePackage</value>
         <array name="httpMethods" type="value" depth="1">
           <value>DELETE</value>
         </array>

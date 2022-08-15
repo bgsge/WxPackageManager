@@ -10,7 +10,12 @@
 
   <!-- nodes -->
 
-<INVOKE NAME="$null" TIMEOUT="" SERVICE="jc.tools.pub.session:getSessionID" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<SEQUENCE NAME="$null" TIMEOUT="" EXIT-ON="FAILURE">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<INVOKE TIMEOUT="" SERVICE="jc.tools.pub.session:getSessionID" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -18,6 +23,7 @@
 <MAP MODE="INPUT">
 </MAP>
 </INVOKE>
+</SEQUENCE>
 </BRANCH>
 
 <INVOKE TIMEOUT="" SERVICE="wx.packages.manager._priv.jdbc:getSourceCredentialsForUserAndRepo" VALIDATE-IN="$none" VALIDATE-OUT="$none">
