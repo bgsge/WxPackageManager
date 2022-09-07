@@ -9466,7 +9466,7 @@
 </MAP>
 </INVOKE>
 
-<BRANCH TIMEOUT="" SWITCH="/string">
+<BRANCH TIMEOUT="" SWITCH="/sourceAccessKey">
   <COMMENT>No deploy for given user, do we have one for &#39;everybody&#39;</COMMENT>
 
   <!-- nodes -->
