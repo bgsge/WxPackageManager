@@ -1,27 +1,66 @@
-<head>
-  <meta charset="utf-8">
-  <title>WmPackageManager</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<html lang="en">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" href="WxPackageManager/help/styles.css">
+<head>
+	<title>Package Home Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="./assets/@delite/dlt-components/css/delite.min.css">
+	<link rel="stylesheet" href="./assets/@delite/dlt-icons/Font/css/dlt-icons-font.css">
+	<link rel="stylesheet" href="./assets/@delite/dlt-icons/Font/css/dlt-icons-glyphs.css">
+	<script src="./assets/angular.min.js"></script>
+	<link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
+	<script src="./assets/jquery.min.js"></script>
+	<script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./assets/swagger/swagger-ui.css">
+	<script src="./assets/swagger/swagger-ui-bundle.js"> </script>
+	<script src="./assets/swagger/swagger-ui-standalone-preset.js"> </script>
+	<script src="./assets/angular-route.js"></script>
+	<script type='text/javascript'>
+		var isAuthenticated = false;
+		var isDownload = false;
+	</script>
+	<script src="appInit.js"></script>
+	<script src="service.js"></script>
+
+	<link rel="stylesheet" href="./assets/style.css">
+	</link>
 </head>
-<body class="mat-typography" style="margin: 0px; padding: 0px">
-	<div class="toolbar" style="height: 64px; background-color: #1776BF; display: flex; justify-content: space-between">
-	  <a href="WxPackageManager"><img src="WxPackageManager/assets/_images/wm-package-manager.svg" height="64px"/></a>
-	  <div style="line-height: 64px; vertical-align: center; color: white; margin-right: 20px">
-		  <i class="fas fa-brain"></i> Help Center
-	  </div>
-	</div>
-	<div style="float: right; padding: 10px">
-		<a href="/WxPackageManager">Home</a>
-	</div>
-	<div class="help-content">
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<button onclick="backToTop()" id="tothetop" title="Go to top"><i class="dlt-icon-panel-control-up"></i></button>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<a class="navbar-brand text-truncate" href="#" data-toggle="tooltip" data-placement="bottom"
+	   	title="{{package.packageName}}"><b>{{package.packageName}}</b></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-collapse collapse" id="navbarNav">
+			<ul class="main-nav col-lg nav navbar-nav" style="flex-basis: auto;height: 64px;margin: 0;padding: 0;">
+				<li class="top-nav nav-item navbar-text main-nav-item" id="main-home-li"
+					ng-class="{ 'active': current.activeTab == '#main-home' }">
+						<a href="about.html" class="nav-link" id="main-home-tab" 
+						aria-controls="main-home"
+						style="color:white; width: 100px; text-align: center">About</a>
+				</li>
+				<li class="top-nav nav-item navbar-text main-nav-item active" id="main-help-li"
+					ng-class="{ 'active': current.activeTab == '#main-help' }">
+					<a href="./help.html" class="nav-link" id="main-help-tab"
+			   	 	aria-controls="main-home"
+						style="color:white; width: 100px; text-align: center">Help</a>
+				</li>
+			</ul>
+			<li class="top-nav nav-item navbar-text main-nav-item" id="main-home-li"
+				ng-class="{ 'active': current.activeTab == '#main-home' }">
+				<a href="./index.html" class="nav-link" id="main-home-tab"
+				   aria-controls="main-home"
+				style="color:white; width: 100px; text-align: center">Home</a>
+			</li>
+	  	</div>
+	</nav>
+	
+	<div class="tab-content container-fluid" id="pills-tabContent" style="margin-top: 90px">
 		<h2>Synopsis</h2>
 		<p>webMethods package manager provides an online central registry for developers to share useful packages with others. This package primarily provides an API to allow third party client tools such as the webMethods wpm cli command to allow developers to find and install packages with a single command line call. The web portal is provided as a convenience to allow registries to be browsed and managed without having to install a local client.
 		</p>
@@ -39,7 +78,7 @@ $ curl "http://localhost:5555/rad/wx.packages:manager/package/MyGreatPackage/v1.
 	{"sourceUrl":"https://github.com/johnpcarter/MyGreatPackage.git", "trust":"TRUSTED_WITH_ISSUES","reason":"bad_email"}
 		</pre>
 		<p>
-			Full API documentation is available via the package itself <a target="api" href="http://localhost:5555/WxPackageManager/api">http://localhost:5555/WxPackageManager/api</a>
+			Full API documentation is available via the package itself <a target="api" href="http://localhost:5555/./about.html#api">http://localhost:5555/./about.html#api</a>
 		</p>
 		<h2>Using the default registry</h2>
 		<p>A single package manager instance can provide multiple independent package registries for different purposes. A default registry is created at startup, which is a public registry i.e. anyone can browse it remotely without requiring any credentials. You can use it to share packages that have no license or export restrictions, otherwise you can create a private package that requires users to authenticate and have permission to download the package.</p>
@@ -59,7 +98,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			You can also add a package from the package manager home screen if you are logged in as an Administrator. You can connect via the menu in the top right corner and clicking on connect. You will then see the option to 'Add package' below the list of packages.
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/add-package.png">
+		<img style="width: 800px" src="./help/add-package.png">
 		<p>
 			The git repo can either represent a proper package i.e. the git root is the package root folder, or if the git is used to host more than one package, it is assumed that the package will be in a subfolder with the same name as package e.g.
 		</p>
@@ -89,7 +128,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			These tags then become the basis for deciding what versions to document in the package manager. You can view the available tags for a given package in the package details page from the packager manager portal
 		</p>
-		<img style="width: 200px" src="WxPackageManager/help/available-versions.png">
+		<img style="width: 200px" src="./help/available-versions.png">
 		<p>
 			or you can use the API to list the available versions 
 		</p>
@@ -109,7 +148,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			or the package manager package details page
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/add-tag.png">
+		<img style="width: 800px" src="./help/add-tag.png">
 		<p>
 			After the accepted versions are shown in the package details via the API.
 		</p>
@@ -141,7 +180,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			From the package manager, click on the package and you will now see the version listed in the available versions. Clicking on the version will show the details of tagged commit including the signature. The Accept button has now been replaced with a Trust button indicating that it is now possible to trust that the code cannot be modified as we have now have the signature.
 		</p>
-		<img style="width: 800px" src="/WxPackageManager/help/tag.png">
+		<img style="width: 800px" src="./help/tag.png">
 		<p>
 			After reviewing the code click on the "trust" button and the package manager will flag this 
 			version as trusted. The signature is also recorded by the package manager and returned as part of the download information for the given package and version. This allow clients to verify that the downloaded version matches and hasn't been replaced since you reviewed the code. You can also choose to trust the package via the API, however you will need to extract the signature associated with the git commit yourself so that it can be included in the api call e.g.
@@ -201,7 +240,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			or the WxPackageManager home page if you have admin rights. Click on the config menu (cog) in the top right hand corner of the page and select registries. Then select "Add registry", if the option is not shown, then you will need to ensure that you are connected as an Administrator level user. You can do this via the connection option in the same menu.
 		</p>
-		<img style="width: 900px" src="/WxPackageManager/help/add-registry.png">
+		<img style="width: 900px" src="./help/add-registry.png">
 		<p>
 			The trust level is a value between 0 and 3, where 0 signifies no trust at all to 3 where packages are guaranteed to be verified and signed against malicious use. Set default to true if you wish to make this registry the default registry i.e. the registry to use if the registry has not been explicitly set when using the packages API.
 		</p>
@@ -212,11 +251,11 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			Adding a package to a private registry requires that you specify who is allowed access to it; this is either a list of recognised user id's or 'everybody' if you want to give access to all authenticated users (remember anonymous access is not allowed). You can as a convenience set this when creating a package to either 'Administrator' or 'everybody' as shown here
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/add-package-security.png">
+		<img style="width: 800px" src="./help/add-package-security.png">
 		<p>
 			Alternatively you can set individual users via the API or the package details page e.g.
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/package-details-add-user.png">
+		<img style="width: 800px" src="./help/package-details-add-user.png">
 		<p>
 			There is a dedicated API resource to allow the users associated with a package to be updated
 		</p>
@@ -235,22 +274,22 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			The package manager allows developers to download packages from private git repositories without requiring that they are known by the git server. It does this by setting a deploy key for the repository and then sharing it with the developer.
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/git-deploy-key.png">
+		<img style="width: 800px" src="./help/git-deploy-key.png">
 		<p>
 			The advantage being that the individual token can be reset or revoked without effecting other users. However, you need to first ensure that the package manager has proper git developer credentials so that it can call the relevant git APIs. Generate a developer access token from your git account settings e.g.
 		</p>
-		<img style="width: 800px" src="WxPackageManager/help/git-personal-access-tokens.png">
+		<img style="width: 800px" src="./help/git-personal-access-tokens.png">
 		<p>
 			Then copy the token and paste it into the credentials sections of the settings page. Click on the config menu in the top right hand corner of the screen and click settings. You can then either set the default source '*', click on the edit button of the first line and enter your git id and the copied token. You can enter multiple git credentials for different git servers, but make sure to specify the appropriate git server url.
 		</p>
-		<img style="width: 900px" src="WxPackageManager/help/settings-git.png">
+		<img style="width: 900px" src="./help/settings-git.png">
 		<p>
 			NOTE: These credentials will only be used by your own account are encrypted and not shared with any users or third-party clients. They are used by the package manager only at your behest to browse private git repositories and allow deploy tokens to be added and removed so that access can be given to other users via the package manager.
 		</p>
 		<p>
 			The package manager can now dynamically add and remove ssh deployments keys for each user that you want to give access to in a private package. However, you need to flag that the package is linked to a private git repository when creating the package by checking the option "source requires authentication". 
 		</p>
-			<img style="width: 800px" src="WxPackageManager/help/add-package-private-git.png">
+			<img style="width: 800px" src="./help/add-package-private-git.png">
 		<p>
 			In which case a ssh rsa public/private key pair will be generated for each user when assigning them to the package. The public key is then uploaded to the git repository as a deploy key and the private key is stored locally and shared with the developer when requesting the download information for the git package.
 		</p>
@@ -258,7 +297,7 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			If a user gets an access denied when trying to download a package with a deploy key, it is probably due to the deploy key being expired or deleted. You can regenerate the key by clicking on the 'key' icon of the associated user.
 		</p>
-		<img style="width: 100px" src="WxPackageManager/help/sync-deploy-key.png">
+		<img style="width: 100px" src="./help/sync-deploy-key.png">
 		<p>Likewise the api call would be</p>
 		<pre>
  $curl -X "POST" "http://localhost:5555/rad/wx/packages/manager/package/MyGreatPackage/user/bob" \
@@ -284,15 +323,15 @@ $ curl -X "POST" "http://localhost:5555/rad/wx.packages:manager/package" \
 		<p>
 			Users can choose to be informed when new versions of a package become available from the package details page
 		</p>
-		<img style="width: 50px" src="WxPackageManager/help/notify-me.png">
+		<img style="width: 50px" src="./help/notify-me.png">
 		<p>
 			However, the user will also have to add their email address via the settings page as shows below;
 		</p>
-		<img style="width: 1200px" src="WxPackageManager/help/notifications-settings.png">
+		<img style="width: 1200px" src="./help/notifications-settings.png">
 		<p>
 			Where they can also choose to add and remove existing notifications. A user can also choose to subscribe to notifications for a registry so that they are informed whenever a package is added to the registry.
 		</p>
-		<img style="width: 600px" src="WxPackageManager/help/add-notification.png">
+		<img style="width: 600px" src="./help/add-notification.png">
 		<pre>
  $curl -X "POST" "http://localhost:5555/rad/wx/packages/manager/notifications" \
  	-u 'bob:****' \
