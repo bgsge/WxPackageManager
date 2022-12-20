@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">hackForExtractClaims</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4KCklEYXRhQ3Vyc29yIHBpcGVsaW5lQ3Vyc29yID0gcGlwZWxpbmUuZ2V0
+Q3Vyc29yKCk7Ck9iamVjdCBjbGFpbXMgPSBJRGF0YVV0aWwuZ2V0KHBpcGVsaW5lQ3Vyc29yLCAi
+Y2xhaW1zRGV0YWlscyIpOwpTdHJpbmcgcmVmID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGlu
+ZUN1cnNvciwgInJlZiIpOwoKLy8gcHJvY2VzcwoKU3RyaW5nIHZhbHVlID0gbnVsbDsKCmlmIChj
+bGFpbXMgIT0gbnVsbCkgewoJSURhdGFDdXJzb3IgYyA9ICgoSURhdGEpIGNsYWltcykuZ2V0Q3Vy
+c29yKCk7Cgl2YWx1ZSA9IElEYXRhVXRpbC5nZXRTdHJpbmcoYywgcmVmKTsKCWMuZGVzdHJveSgp
+Owp9CgovLyBwaXBlbGluZSBvdXQKCklEYXRhVXRpbC5wdXQocGlwZWxpbmVDdXJzb3IsICJ2YWx1
+ZSIsIHZhbHVlKTsKcGlwZWxpbmVDdXJzb3IuZGVzdHJveSgpOwoJ</value>
+</Values>

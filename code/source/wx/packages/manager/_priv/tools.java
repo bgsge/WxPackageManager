@@ -228,6 +228,42 @@ public final class tools
 
 
 
+	public static final void hackForExtractClaims (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(hackForExtractClaims)>> ---
+		// @sigtype java 3.5
+		// [i] object:0:required claimsDetails
+		// [i] field:0:required ref
+		// [o] field:0:required value
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		Object claims = IDataUtil.get(pipelineCursor, "claimsDetails");
+		String ref = IDataUtil.getString(pipelineCursor, "ref");
+		
+		// process
+		
+		String value = null;
+		
+		if (claims != null) {
+			IDataCursor c = ((IData) claims).getCursor();
+			value = IDataUtil.getString(c, ref);
+			c.destroy();
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "value", value);
+		pipelineCursor.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void isInList (IData pipeline)
         throws ServiceException
 	{

@@ -19,67 +19,7 @@
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">registry</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">category</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">filter</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
+          <value name="node_comment">temporary accessToken returned by auhenticate service</value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
@@ -90,6 +30,49 @@
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment">Optional number of days after which returned token will be revoked automatically</value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">numDays</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
+          <array name="field_options" type="value" depth="1">
+            <value>5</value>
+            <value>30</value>
+            <value>60</value>
+            <value>90</value>
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment">label to easily identify token when listing/revoking later</value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">label</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
           <array name="field_options" type="value" depth="1">
           </array>
           <value name="nillable">true</value>
@@ -113,44 +96,30 @@
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
+          <value name="node_comment">long term token than can now be used for CI/CD scripts etc</value>
           <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">packages</value>
-          <value name="field_type">recref</value>
-          <value name="field_dim">1</value>
-          <value name="wrapper_type">IData</value>
+          <value name="field_name">accessToken</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
-          <value name="is_soap_array_encoding_used">false</value>
-          <value name="rec_closed">true</value>
-          <value name="modifiable">true</value>
-          <value name="rec_ref">wx.packages.manager.packages_.docTypes:Package</value>
         </record>
       </array>
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">## List Packages
-lists all packages for the given registry, category and filter. All inputs are optional, if no registry is given assumes that the default registry should be queried.
-The list tops out at a maximum of 50 rows, the user should either apply a category or filter if the list is too long. Results our ordered by download count descending.
-
-NOTE: private registries will only list packages to which the user has been granted access, including administrators. The only exception being the special user
-'Administrator' who can see all packages regardless of access permissions.
-
-This method can be called anoymously, but will only return packages for public registries
-
-**INPUT**
-registry - (Optional) name of the registry to query, default registry is used if not given (You can change the default registry via the API if required)
-category - (Optional) The category of the packages to list (categories should be prefefined by registry owner).
-filter - (Optional) can be used to filter against the package name or description to shorten results.
-
-**OUTPUT**
-packages - list of package summary including the name, category, description, registration date, searchTags and totalDownloads.</value>
+  <value name="node_comment">Exchanges short term token generated via authenticate service for a long term token that can be then used in CI/CD scripts for automation.
+Label is required for tracking purposes, see listTokens service. User can specify an optiona numDays after which the token is revoked automatically.
+User can revoke tokens via the revokeToken service for tokens that never expire or expire a token before numDays has been reached.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
