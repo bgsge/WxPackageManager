@@ -3690,5 +3690,14 @@
 
 <MAPDELETE FIELD="/isTokenPresentOutput;2;0">
 </MAPDELETE>
+
+<MAPDELETE FIELD="/failure;3;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/failureMessage;1;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/failureName;1;0">
+</MAPDELETE>
 </MAP>
 </FLOW>
