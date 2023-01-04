@@ -455,7 +455,55 @@ Allows you to register an email address to be informed when new package are adde
         <record name="totalDownloads" javaclass="com.wm.util.Values">
           <value name="name">totalDownloads</value>
           <value name="source">QUERY</value>
-          <value name="type">STRING</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="upVotes" javaclass="com.wm.util.Values">
+          <value name="name">upVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="downVotes" javaclass="com.wm.util.Values">
+          <value name="name">downVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="diffVotes" javaclass="com.wm.util.Values">
+          <value name="name">diffVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="rating" javaclass="com.wm.util.Values">
+          <value name="name">rating</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
           <null name="description"/>
           <Boolean name="isRequired">true</Boolean>
           <Boolean name="isArray">false</Boolean>
@@ -795,6 +843,78 @@ Allows you to register an email address to be informed when new package are adde
         </record>
         <record name="totalDownloads" javaclass="com.wm.util.Values">
           <value name="name">totalDownloads</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="upVotes" javaclass="com.wm.util.Values">
+          <value name="name">upVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="downVotes" javaclass="com.wm.util.Values">
+          <value name="name">downVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="diffVotes" javaclass="com.wm.util.Values">
+          <value name="name">diffVotes</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="rating" javaclass="com.wm.util.Values">
+          <value name="name">rating</value>
+          <value name="source">QUERY</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="misc1" javaclass="com.wm.util.Values">
+          <value name="name">misc1</value>
+          <value name="source">QUERY</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="misc2" javaclass="com.wm.util.Values">
+          <value name="name">misc2</value>
           <value name="source">QUERY</value>
           <value name="type">STRING</value>
           <null name="description"/>
@@ -2213,6 +2333,27 @@ Allows you to register an email address to be informed when new package are adde
         </record>
       </record>
     </record>
+    <record name="/package/{packageName}/vote_DELETE_$response" javaclass="com.wm.util.Values">
+      <value name="name">packagepackageNamevote_DELETE_response</value>
+      <value name="nsName">/package/{packageName}/vote_DELETE_$response</value>
+      <Boolean name="autoGenerated">true</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+      <record name="parameters" javaclass="com.wm.util.Values">
+        <record name="success" javaclass="com.wm.util.Values">
+          <value name="name">success</value>
+          <value name="source">QUERY</value>
+          <value name="type">BOOLEAN</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+      </record>
+    </record>
     <record name="/package/{packageName}/history_GET_$response" javaclass="com.wm.util.Values">
       <value name="name">packagepackageNamehistory_GET_response</value>
       <value name="nsName">/package/{packageName}/history_GET_$response</value>
@@ -2480,6 +2621,27 @@ Allows you to register an email address to be informed when new package are adde
         </record>
       </record>
     </record>
+    <record name="/notification/{name}_DELETE_$response" javaclass="com.wm.util.Values">
+      <value name="name">notificationname_DELETE_response</value>
+      <value name="nsName">/notification/{name}_DELETE_$response</value>
+      <Boolean name="autoGenerated">true</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+      <record name="parameters" javaclass="com.wm.util.Values">
+        <record name="success" javaclass="com.wm.util.Values">
+          <value name="name">success</value>
+          <value name="source">QUERY</value>
+          <value name="type">BOOLEAN</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+      </record>
+    </record>
     <record name="wx.packages.manager.registry_.docTypes:Registry" javaclass="com.wm.util.Values">
       <value name="name">Registry</value>
       <value name="nsName">wx.packages.manager.registry_.docTypes:Registry</value>
@@ -2562,27 +2724,6 @@ Allows you to register an email address to be informed when new package are adde
         </record>
         <record name="default" javaclass="com.wm.util.Values">
           <value name="name">default</value>
-          <value name="source">QUERY</value>
-          <value name="type">BOOLEAN</value>
-          <null name="description"/>
-          <Boolean name="isRequired">true</Boolean>
-          <Boolean name="isArray">false</Boolean>
-          <null name="defaultValue"/>
-          <null name="refDefinition"/>
-          <null name="definitionName"/>
-          <Boolean name="includeInRad">true</Boolean>
-        </record>
-      </record>
-    </record>
-    <record name="/notification/{name}_DELETE_$response" javaclass="com.wm.util.Values">
-      <value name="name">notificationname_DELETE_response</value>
-      <value name="nsName">/notification/{name}_DELETE_$response</value>
-      <Boolean name="autoGenerated">true</Boolean>
-      <Boolean name="recursive">false</Boolean>
-      <null name="description"/>
-      <record name="parameters" javaclass="com.wm.util.Values">
-        <record name="success" javaclass="com.wm.util.Values">
-          <value name="name">success</value>
           <value name="source">QUERY</value>
           <value name="type">BOOLEAN</value>
           <null name="description"/>
@@ -2831,6 +2972,27 @@ Allows you to register an email address to be informed when new package are adde
           <null name="defaultValue"/>
           <value name="refDefinition">wx.packages.manager.packages_.services:getTagInfo.manifest.requires</value>
           <value name="definitionName">requires</value>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+      </record>
+    </record>
+    <record name="/package/{packageName}/vote_POST_$response" javaclass="com.wm.util.Values">
+      <value name="name">packagepackageNamevote_POST_response</value>
+      <value name="nsName">/package/{packageName}/vote_POST_$response</value>
+      <Boolean name="autoGenerated">true</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+      <record name="parameters" javaclass="com.wm.util.Values">
+        <record name="success" javaclass="com.wm.util.Values">
+          <value name="name">success</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">BOOLEAN</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
           <Boolean name="includeInRad">true</Boolean>
         </record>
       </record>
@@ -3358,598 +3520,6 @@ User can revoke tokens via the revokeToken service for tokens that never expire 
         </record>
       </record>
     </record>
-    <record name="/registries" javaclass="com.wm.util.Values">
-      <value name="nsName">wx.packages.manager:registry</value>
-      <value name="path">/registries</value>
-      <null name="suffix"/>
-      <record name="operations" javaclass="com.wm.util.Values">
-        <record name="GET" javaclass="com.wm.util.Values">
-          <value name="operationType">GET</value>
-          <value name="nsName">/registries_GET</value>
-          <value name="description">## List available registries
-
-The server can maintain multiple registries, which are completely independent. A 'default' public untrusted registry is created at startup.
-Other registries can be created and deleted. Use this method to list them and identify, which is flagged as the default registry.
-
-## INPUT
-type - (optilonal) list only registries for the given type, 'private' or 'public'
-
-## OUTPUT
-- registries - List of registry summary, including name, type, description, trustLevel, default
-
-</value>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>wx.packages.manager.registry_.docTypes:Registry</value>
-            <value>/registries_GET_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="type" javaclass="com.wm.util.Values">
-              <value name="name">type</value>
-              <value name="source">QUERY</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registries_GET_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-      </record>
-    </record>
-    <record name="/registries/{type}" javaclass="com.wm.util.Values">
-      <value name="nsName">wx.packages.manager:registry</value>
-      <value name="path">/registries/{type}</value>
-      <null name="suffix"/>
-      <record name="operations" javaclass="com.wm.util.Values">
-        <record name="GET" javaclass="com.wm.util.Values">
-          <value name="operationType">GET</value>
-          <value name="nsName">/registries/{type}_GET</value>
-          <value name="description">## List available registries
-
-The server can maintain multiple registries, which are completely independent. A 'default' public untrusted registry is created at startup.
-Other registries can be created and deleted. Use this method to list them and identify, which is flagged as the default registry.
-
-## INPUT
-type - (optilonal) list only registries for the given type, 'private' or 'public'
-
-## OUTPUT
-- registries - List of registry summary, including name, type, description, trustLevel, default
-
-</value>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>wx.packages.manager.registry_.docTypes:Registry</value>
-            <value>/registries/{type}_GET_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="type" javaclass="com.wm.util.Values">
-              <value name="name">type</value>
-              <value name="source">PATH</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registries/{type}_GET_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-      </record>
-    </record>
-    <record name="/registry" javaclass="com.wm.util.Values">
-      <value name="nsName">wx.packages.manager:registry</value>
-      <value name="path">/registry</value>
-      <null name="suffix"/>
-      <record name="operations" javaclass="com.wm.util.Values">
-        <record name="POST" javaclass="com.wm.util.Values">
-          <value name="operationType">POST</value>
-          <value name="nsName">/registry_POST</value>
-          <value name="description">## Create Registry
-
-Creates a new registry with the given properties. The registry name must be unique otherwise an exception is thrown.
-
-You can create either a public or private registry. Public registries can be accessed anonymously without any access retrictions.
-A private registry requires that the caller is authenticated and only lists packages that are flagged for everybody or to which they have been granted access.
-
-The trustLevel is an integer from 0 to 3. Where 0 offers no trust to 3 with absolution trust. Packages belonging to a trusted version will require
-that the packages are trusted, i.e. that they are signed and the signature is registered in the registry.
-
-This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
- 
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-description - (optional) long description of registry, included in package view page.
-searchTags - (optional) an array of search keys.
-type - Either 'public' or 'private'.
-trustLevel - a value between 0 (no trust) to 3 (absolute trust)
-default - (optional) if set to true, this registry will become the default registry.
-
-## OUTPUT
-success - true if registry is created
-
-
-## EXCEPTION
-thrown if either a registry already exists for the given name or a required input is missing</value>
-          <array name="consumes" type="value" depth="1">
-            <value>application/x-www-form-urlencoded</value>
-          </array>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>/registry_POST_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="description" javaclass="com.wm.util.Values">
-              <value name="name">description</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="searchTags" javaclass="com.wm.util.Values">
-              <value name="name">searchTags</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">true</Boolean>
-              <value name="collectionFormat">csv</value>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="type" javaclass="com.wm.util.Values">
-              <value name="name">type</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="trustLevel" javaclass="com.wm.util.Values">
-              <value name="name">trustLevel</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">INTEGER</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="default" javaclass="com.wm.util.Values">
-              <value name="name">default</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">BOOLEAN</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registry_POST_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-        <record name="GET" javaclass="com.wm.util.Values">
-          <value name="operationType">GET</value>
-          <value name="nsName">/registry_GET</value>
-          <value name="description">## Get registry
-
-Returns the details for the given registry. 
-
-This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
-
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-
-## OUTPUT
-registry - The details for the given registry</value>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>wx.packages.manager.registry_.docTypes:Registry</value>
-            <value>/registry_GET_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registry_GET_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-      </record>
-    </record>
-    <record name="/registry/{name}" javaclass="com.wm.util.Values">
-      <value name="nsName">wx.packages.manager:registry</value>
-      <value name="path">/registry/{name}</value>
-      <null name="suffix"/>
-      <record name="operations" javaclass="com.wm.util.Values">
-        <record name="DELETE" javaclass="com.wm.util.Values">
-          <value name="operationType">DELETE</value>
-          <value name="nsName">/registry/{name}_DELETE</value>
-          <value name="description">## Remove registry
-
-Removes the given registry. Reverts the default registry back to 'default' if this registry is flagged as the current default.
-
-*NOTE:* You will need administrator level permissions to use this method.
-
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-
-## OUTPUT
-success - true if successful</value>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>/registry/{name}_DELETE_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
-              <value name="source">PATH</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registry/{name}_DELETE_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-        <record name="PUT" javaclass="com.wm.util.Values">
-          <value name="operationType">PUT</value>
-          <value name="nsName">/registry/{name}_PUT</value>
-          <value name="description">## Sets the default registry to the given registry. 
-
-All ensuing API calls to /packages resource will use this registry by default if the registry is not explicitly provided.
-
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-
-*NOTE:* You will need administrator level permissions to use this method.
-
-## EXCEPION
-thrown in registry does not exist</value>
-          <array name="consumes" type="value" depth="1">
-            <value>application/x-www-form-urlencoded</value>
-          </array>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>/registry/{name}_PUT_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
-              <value name="source">PATH</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registry/{name}_PUT_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-        <record name="GET" javaclass="com.wm.util.Values">
-          <value name="operationType">GET</value>
-          <value name="nsName">/registry/{name}_GET</value>
-          <value name="description">## Get registry
-
-Returns the details for the given registry. 
-
-This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
-
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-
-## OUTPUT
-registry - The details for the given registry</value>
-          <array name="requiredDefinitions" type="value" depth="1">
-            <value>wx.packages.manager.registry_.docTypes:Registry</value>
-            <value>/registry/{name}_GET_$response</value>
-          </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">HEADER</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-            <record name="name" javaclass="com.wm.util.Values">
-              <value name="name">name</value>
-              <value name="source">PATH</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">true</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
-          <record name="responseParam" javaclass="com.wm.util.Values">
-            <value name="name">reseponse</value>
-            <value name="source">BODY</value>
-            <value name="type">REFERENCE</value>
-            <null name="description"/>
-            <Boolean name="isRequired">true</Boolean>
-            <Boolean name="isArray">false</Boolean>
-            <null name="defaultValue"/>
-            <value name="refDefinition">/registry/{name}_GET_$response</value>
-            <null name="definitionName"/>
-            <Boolean name="includeInRad">true</Boolean>
-          </record>
-          <record name="responses" javaclass="com.wm.util.Values">
-            <record name="200" javaclass="com.wm.util.Values">
-              <value name="statusCode">200</value>
-              <value name="description">OK</value>
-              <Boolean name="returnOutput">true</Boolean>
-            </record>
-            <record name="401" javaclass="com.wm.util.Values">
-              <value name="statusCode">401</value>
-              <value name="description">Access Denied</value>
-              <Boolean name="returnOutput">false</Boolean>
-            </record>
-          </record>
-        </record>
-      </record>
-    </record>
     <record name="/notifications" javaclass="com.wm.util.Values">
       <value name="nsName">wx.packages.manager:notifications</value>
       <value name="path">/notifications</value>
@@ -4437,6 +4007,610 @@ success - true if db updated, false if not</value>
             <Boolean name="isArray">false</Boolean>
             <null name="defaultValue"/>
             <value name="refDefinition">/notification/email_DELETE_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="/registries" javaclass="com.wm.util.Values">
+      <value name="nsName">wx.packages.manager:registry</value>
+      <value name="path">/registries</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="GET" javaclass="com.wm.util.Values">
+          <value name="operationType">GET</value>
+          <value name="nsName">/registries_GET</value>
+          <value name="description">## List available registries
+
+The server can maintain multiple registries, which are completely independent. A 'default' public untrusted registry is created at startup.
+Other registries can be created and deleted. Use this method to list them and identify, which is flagged as the default registry.
+
+## INPUT
+type - (optilonal) list only registries for the given type, 'private' or 'public'
+
+## OUTPUT
+- registries - List of registry summary, including name, type, description, trustLevel, default
+
+</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>wx.packages.manager.registry_.docTypes:Registry</value>
+            <value>/registries_GET_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="type" javaclass="com.wm.util.Values">
+              <value name="name">type</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registries_GET_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="/registries/{type}" javaclass="com.wm.util.Values">
+      <value name="nsName">wx.packages.manager:registry</value>
+      <value name="path">/registries/{type}</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="GET" javaclass="com.wm.util.Values">
+          <value name="operationType">GET</value>
+          <value name="nsName">/registries/{type}_GET</value>
+          <value name="description">## List available registries
+
+The server can maintain multiple registries, which are completely independent. A 'default' public untrusted registry is created at startup.
+Other registries can be created and deleted. Use this method to list them and identify, which is flagged as the default registry.
+
+## INPUT
+type - (optilonal) list only registries for the given type, 'private' or 'public'
+
+## OUTPUT
+- registries - List of registry summary, including name, type, description, trustLevel, default
+
+</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>wx.packages.manager.registry_.docTypes:Registry</value>
+            <value>/registries/{type}_GET_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="type" javaclass="com.wm.util.Values">
+              <value name="name">type</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registries/{type}_GET_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="/registry" javaclass="com.wm.util.Values">
+      <value name="nsName">wx.packages.manager:registry</value>
+      <value name="path">/registry</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="POST" javaclass="com.wm.util.Values">
+          <value name="operationType">POST</value>
+          <value name="nsName">/registry_POST</value>
+          <value name="description">## Create Registry
+
+Creates a new registry with the given properties. The registry name must be unique otherwise an exception is thrown.
+
+You can create either a public or private registry. Public registries can be accessed anonymously without any access retrictions.
+A private registry requires that the caller is authenticated and only lists packages that are flagged for everybody or to which they have been granted access.
+
+The trustLevel is an integer from 0 to 3. Where 0 offers no trust to 3 with absolution trust. Packages belonging to a trusted version will require
+that the packages are trusted, i.e. that they are signed and the signature is registered in the registry.
+
+This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
+ 
+## INPUT
+name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
+description - (optional) long description of registry, included in package view page.
+searchTags - (optional) an array of search keys.
+type - Either 'public' or 'private'.
+trustLevel - a value between 0 (no trust) to 3 (absolute trust)
+default - (optional) if set to true, this registry will become the default registry.
+
+## OUTPUT
+success - true if registry is created
+
+
+## EXCEPTION
+thrown if either a registry already exists for the given name or a required input is missing</value>
+          <array name="consumes" type="value" depth="1">
+            <value>application/x-www-form-urlencoded</value>
+          </array>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>/registry_POST_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="name" javaclass="com.wm.util.Values">
+              <value name="name">name</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="description" javaclass="com.wm.util.Values">
+              <value name="name">description</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="legal" javaclass="com.wm.util.Values">
+              <value name="name">legal</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="searchTags" javaclass="com.wm.util.Values">
+              <value name="name">searchTags</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">true</Boolean>
+              <value name="collectionFormat">csv</value>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="type" javaclass="com.wm.util.Values">
+              <value name="name">type</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="trustLevel" javaclass="com.wm.util.Values">
+              <value name="name">trustLevel</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">INTEGER</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="default" javaclass="com.wm.util.Values">
+              <value name="name">default</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">BOOLEAN</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registry_POST_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+        <record name="GET" javaclass="com.wm.util.Values">
+          <value name="operationType">GET</value>
+          <value name="nsName">/registry_GET</value>
+          <value name="description">## Get registry
+
+Returns the details for the given registry. 
+
+This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
+
+## INPUT
+name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
+
+## OUTPUT
+registry - The details for the given registry</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>wx.packages.manager.registry_.docTypes:Registry</value>
+            <value>/registry_GET_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="name" javaclass="com.wm.util.Values">
+              <value name="name">name</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registry_GET_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="/registry/{name}" javaclass="com.wm.util.Values">
+      <value name="nsName">wx.packages.manager:registry</value>
+      <value name="path">/registry/{name}</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="DELETE" javaclass="com.wm.util.Values">
+          <value name="operationType">DELETE</value>
+          <value name="nsName">/registry/{name}_DELETE</value>
+          <value name="description">## Remove registry
+
+Removes the given registry. Reverts the default registry back to 'default' if this registry is flagged as the current default.
+
+*NOTE:* You will need administrator level permissions to use this method.
+
+## INPUT
+name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
+
+## OUTPUT
+success - true if successful</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>/registry/{name}_DELETE_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="name" javaclass="com.wm.util.Values">
+              <value name="name">name</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registry/{name}_DELETE_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+        <record name="PUT" javaclass="com.wm.util.Values">
+          <value name="operationType">PUT</value>
+          <value name="nsName">/registry/{name}_PUT</value>
+          <value name="description">## Sets the default registry to the given registry. 
+
+All ensuing API calls to /packages resource will use this registry by default if the registry is not explicitly provided.
+
+## INPUT
+name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
+
+*NOTE:* You will need administrator level permissions to use this method.
+
+## EXCEPION
+thrown in registry does not exist</value>
+          <array name="consumes" type="value" depth="1">
+            <value>application/x-www-form-urlencoded</value>
+          </array>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>/registry/{name}_PUT_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="name" javaclass="com.wm.util.Values">
+              <value name="name">name</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registry/{name}_PUT_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+        <record name="GET" javaclass="com.wm.util.Values">
+          <value name="operationType">GET</value>
+          <value name="nsName">/registry/{name}_GET</value>
+          <value name="description">## Get registry
+
+Returns the details for the given registry. 
+
+This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
+
+## INPUT
+name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
+
+## OUTPUT
+registry - The details for the given registry</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>wx.packages.manager.registry_.docTypes:Registry</value>
+            <value>/registry/{name}_GET_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="name" javaclass="com.wm.util.Values">
+              <value name="name">name</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/registry/{name}_GET_$response</value>
             <null name="definitionName"/>
             <Boolean name="includeInRad">true</Boolean>
           </record>
@@ -6942,6 +7116,156 @@ reason - (optional) describes why TRUSTD_WITH_ISSUES was returned.
             <Boolean name="isArray">false</Boolean>
             <null name="defaultValue"/>
             <value name="refDefinition">/package/{packageName}/readme/{tag}_GET_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="/package/{packageName}/vote" javaclass="com.wm.util.Values">
+      <value name="nsName">wx.packages.manager:packages</value>
+      <value name="path">/package/{packageName}/vote</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="POST" javaclass="com.wm.util.Values">
+          <value name="operationType">POST</value>
+          <value name="nsName">/package/{packageName}/vote_POST</value>
+          <value name="description">Allow user to add a positive vote for this packasge, a user can only vote up or down once. Multiple votes votes will be ignored. An up vote can be cancelled by making a down vote.</value>
+          <array name="consumes" type="value" depth="1">
+            <value>application/x-www-form-urlencoded</value>
+          </array>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>/package/{packageName}/vote_POST_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="registry" javaclass="com.wm.util.Values">
+              <value name="name">registry</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="packageName" javaclass="com.wm.util.Values">
+              <value name="name">packageName</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/package/{packageName}/vote_POST_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+        <record name="DELETE" javaclass="com.wm.util.Values">
+          <value name="operationType">DELETE</value>
+          <value name="nsName">/package/{packageName}/vote_DELETE</value>
+          <value name="description">Allows user to add a negative vote for this packasge, a user can only vote up or down once. Multiple down votes will be ignored. A down vote can be cancelled by making an up vote.</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>/package/{packageName}/vote_DELETE_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="accessToken" javaclass="com.wm.util.Values">
+              <value name="name">accessToken</value>
+              <value name="source">HEADER</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="registry" javaclass="com.wm.util.Values">
+              <value name="name">registry</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="packageName" javaclass="com.wm.util.Values">
+              <value name="name">packageName</value>
+              <value name="source">PATH</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/package/{packageName}/vote_DELETE_$response</value>
             <null name="definitionName"/>
             <Boolean name="includeInRad">true</Boolean>
           </record>

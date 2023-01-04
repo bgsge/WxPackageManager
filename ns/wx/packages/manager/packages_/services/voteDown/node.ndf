@@ -46,87 +46,11 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">name</value>
+          <value name="field_name">registry</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">description</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">legal</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <array name="field_options" type="value" depth="1">
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">searchTags</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">1</value>
           <value name="field_opt">true</value>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-          <value name="is_soap_array_encoding_used">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">false</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">type</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
           <array name="field_options" type="value" depth="1">
-            <value>private</value>
-            <value>public</value>
           </array>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
@@ -137,31 +61,16 @@
           <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">trustLevel</value>
-          <value name="field_type">object</value>
+          <value name="field_name">packageName</value>
+          <value name="field_type">string</value>
           <value name="field_dim">0</value>
-          <value name="wrapper_type">java.lang.Integer</value>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">unknown</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment"></value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">default</value>
-          <value name="field_type">object</value>
-          <value name="field_dim">0</value>
-          <value name="wrapper_type">java.lang.Boolean</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
@@ -201,32 +110,7 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">## Create Registry
-
-Creates a new registry with the given properties. The registry name must be unique otherwise an exception is thrown.
-
-You can create either a public or private registry. Public registries can be accessed anonymously without any access retrictions.
-A private registry requires that the caller is authenticated and only lists packages that are flagged for everybody or to which they have been granted access.
-
-The trustLevel is an integer from 0 to 3. Where 0 offers no trust to 3 with absolution trust. Packages belonging to a trusted version will require
-that the packages are trusted, i.e. that they are signed and the signature is registered in the registry.
-
-This method can be called anonymously, but will only show public registries, private registries will only be shown to recognised users.
- 
-## INPUT
-name - Simple unique name (spaces and special characters will replaced with '-' and upper case characters converted to lowercase)
-description - (optional) long description of registry, included in package view page.
-searchTags - (optional) an array of search keys.
-type - Either 'public' or 'private'.
-trustLevel - a value between 0 (no trust) to 3 (absolute trust)
-default - (optional) if set to true, this registry will become the default registry.
-
-## OUTPUT
-success - true if registry is created
-
-
-## EXCEPTION
-thrown if either a registry already exists for the given name or a required input is missing</value>
+  <value name="node_comment">Allows user to add a negative vote for this packasge, a user can only vote up or down once. Multiple down votes will be ignored. A down vote can be cancelled by making an up vote.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
@@ -274,7 +158,7 @@ thrown if either a registry already exists for the given name or a required inpu
     <value>PUT</value>
     <value>PATCH</value>
   </array>
-  <value name="pipeline_option">2</value>
+  <value name="pipeline_option">1</value>
   <null name="originURI"/>
   <value name="modifiable">true</value>
   <value name="is_public">false</value>
