@@ -259,18 +259,6 @@ notifications - list of notifications
             <value>/notifications_GET_$response</value>
           </array>
           <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">QUERY</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
             <record name="registry" javaclass="com.wm.util.Values">
               <value name="name">registry</value>
               <value name="source">QUERY</value>
@@ -339,18 +327,6 @@ success - true if notification added successfully, false if registry or package 
             <value>/notification_POST_$response</value>
           </array>
           <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
             <record name="registry" javaclass="com.wm.util.Values">
               <value name="name">registry</value>
               <value name="source">FORMDATA</value>
@@ -462,18 +438,6 @@ success - true if notification exists and was removed, false if not</value>
             <value>/notification/{name}_DELETE_$response</value>
           </array>
           <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">QUERY</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
             <record name="registry" javaclass="com.wm.util.Values">
               <value name="name">registry</value>
               <value name="source">QUERY</value>
@@ -562,18 +526,6 @@ success - true if db updated, false if not</value>
             <value>/notification/email/{email}_PUT_$response</value>
           </array>
           <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">FORMDATA</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
             <record name="email" javaclass="com.wm.util.Values">
               <value name="name">email</value>
               <value name="source">PATH</value>
@@ -634,20 +586,6 @@ email</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/notification/email_GET_$response</value>
           </array>
-          <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">QUERY</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
-          </record>
           <record name="responseParam" javaclass="com.wm.util.Values">
             <value name="name">reseponse</value>
             <value name="source">BODY</value>
@@ -689,18 +627,6 @@ success - true if db updated, false if not</value>
             <value>/notification/email_DELETE_$response</value>
           </array>
           <record name="parameters" javaclass="com.wm.util.Values">
-            <record name="accessToken" javaclass="com.wm.util.Values">
-              <value name="name">accessToken</value>
-              <value name="source">QUERY</value>
-              <value name="type">STRING</value>
-              <null name="description"/>
-              <Boolean name="isRequired">false</Boolean>
-              <Boolean name="isArray">false</Boolean>
-              <null name="defaultValue"/>
-              <null name="refDefinition"/>
-              <null name="definitionName"/>
-              <Boolean name="includeInRad">true</Boolean>
-            </record>
             <record name="email" javaclass="com.wm.util.Values">
               <value name="name">email</value>
               <value name="source">QUERY</value>
