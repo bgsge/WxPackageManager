@@ -843,7 +843,7 @@
 </INVOKE>
 
 <INVOKE TIMEOUT="" SERVICE="wm.server.access:aclAssign" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT>wx.packages.manager.access_.services:getSession</COMMENT>
+  <COMMENT>wx.packages.manager.access_.services:getSessionID</COMMENT>
 
   <!-- nodes -->
 
@@ -988,7 +988,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">wx.packages.manager.access_.services:getSession</value>
+  <value name="xml">wx.packages.manager.access_.services:getSessionID</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>
