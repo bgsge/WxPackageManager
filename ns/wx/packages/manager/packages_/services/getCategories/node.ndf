@@ -29,6 +29,7 @@
           <value name="field_name">registry</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
           <array name="field_options" type="value" depth="1">
           </array>
           <value name="nillable">true</value>
@@ -58,16 +59,13 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">registryDetails</value>
-          <value name="field_type">recref</value>
-          <value name="field_dim">0</value>
-          <value name="wrapper_type">IData</value>
+          <value name="field_name">categories</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">1</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
-          <value name="rec_closed">true</value>
-          <value name="modifiable">true</value>
-          <value name="rec_ref">wx.packages.manager.registry_.docTypes:Registry</value>
+          <value name="is_soap_array_encoding_used">false</value>
         </record>
       </array>
       <value name="modifiable">true</value>
