@@ -5272,19 +5272,6 @@
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
     <array name="rec_fields" type="record" depth="1">
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">record</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">package</value>
-        <value name="field_type">recref</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-        <value name="modifiable">true</value>
-        <value name="rec_ref">wx.packages.manager.packages_.docTypes:Package</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -5581,89 +5568,5 @@
 
 <MAPDELETE FIELD="/credentials;2;1">
 </MAPDELETE>
-
-<MAPSET NAME="Setter" OVERWRITE="false" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/package;4;0;wx.packages.manager.packages_.docTypes:Package/upVotes(1);3.6;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <number name="xml" type="Integer">0</number>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="is_public">false</value>
-    <value name="field_name">upVotes</value>
-    <value name="field_type">object</value>
-    <value name="field_dim">0</value>
-    <value name="wrapper_type">java.lang.Integer</value>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
-
-<MAPSET NAME="Setter" OVERWRITE="false" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/package;4;0;wx.packages.manager.packages_.docTypes:Package/rating(1);3.6;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <number name="xml" type="Integer">0</number>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="is_public">false</value>
-    <value name="field_name">rating</value>
-    <value name="field_type">object</value>
-    <value name="field_dim">0</value>
-    <value name="wrapper_type">java.lang.Integer</value>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
-
-<MAPSET NAME="Setter" OVERWRITE="false" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/package;4;0;wx.packages.manager.packages_.docTypes:Package/downVotes(1);3.6;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <number name="xml" type="Integer">0</number>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="is_public">false</value>
-    <value name="field_name">downVotes</value>
-    <value name="field_type">object</value>
-    <value name="field_dim">0</value>
-    <value name="wrapper_type">java.lang.Integer</value>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
-
-<MAPSET NAME="Setter" OVERWRITE="false" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/package;4;0;wx.packages.manager.packages_.docTypes:Package/totalDownloads(2);3.6;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <number name="xml" type="Integer">0</number>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="is_public">false</value>
-    <value name="field_name">totalDownloads</value>
-    <value name="field_type">object</value>
-    <value name="field_dim">0</value>
-    <value name="wrapper_type">java.lang.Integer</value>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
 </MAP>
 </FLOW>
