@@ -142,7 +142,7 @@ packageName - the package to be queried.
 ## OUTPUT
 values - an array of label/value pairs where label is the interval description (e.g. date or time) and value is an integer of the total downloads</value>
   <value name="stateless">yes</value>
-  <value name="caching">no</value>
+  <value name="caching">yes</value>
   <value name="prefetch">no</value>
   <value name="cache_ttl">15</value>
   <value name="prefetch_level">1</value>

@@ -547,6 +547,30 @@
           </array>
           <value name="modifiable">true</value>
         </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">trust</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <array name="field_options" type="value" depth="1">
+            <value>TRUSTED</value>
+            <value>TRUSTED_WITH_VALIDATION_ERRORS</value>
+            <value>NOT_TRUSTED</value>
+            <value>UNSIGNED</value>
+            <value>MISMATCHED_SIGNATURE</value>
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
       </array>
       <value name="modifiable">true</value>
     </record>
@@ -575,7 +599,7 @@ thrown if associated git repository is private the current user does not have su
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
-  <value name="cache_ttl">15</value>
+  <value name="cache_ttl">60</value>
   <value name="prefetch_level">1</value>
   <value name="audit_level">off</value>
   <value name="check_internal_acls">no</value>
