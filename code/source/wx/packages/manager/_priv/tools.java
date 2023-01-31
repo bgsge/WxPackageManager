@@ -723,7 +723,7 @@ public final class tools
 	      .toLocalDate();
 	}
 	
-	public static final String TIMESTAMP_PATTERN = "dd-MM-yyyy";
+	public static final String TIMESTAMP_PATTERN = "dd-MM-yy";
 	public static final DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern(TIMESTAMP_PATTERN);
 	
 	public static String formatDate(Date date) {
