@@ -19,38 +19,14 @@
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
-          <value name="node_comment">Optional number of days after which returned token will be revoked automatically</value>
+          <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">numDays</value>
-          <value name="field_type">string</value>
-          <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
-          <array name="field_options" type="value" depth="1">
-            <value>5</value>
-            <value>30</value>
-            <value>60</value>
-            <value>90</value>
-          </array>
-          <value name="nillable">true</value>
-          <value name="form_qualified">false</value>
-          <value name="is_global">false</value>
-        </record>
-        <record javaclass="com.wm.util.Values">
-          <value name="node_type">record</value>
-          <value name="node_subtype">unknown</value>
-          <value name="node_comment">label to easily identify token when listing/revoking later</value>
-          <record name="node_hints" javaclass="com.wm.util.Values">
-            <value name="field_usereditable">true</value>
-            <value name="field_largerEditor">false</value>
-            <value name="field_password">false</value>
-          </record>
-          <value name="is_public">false</value>
-          <value name="field_name">label</value>
+          <value name="field_name">packageName</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
           <array name="field_options" type="value" depth="1">
@@ -62,19 +38,73 @@
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
-          <value name="node_comment">(optional) Allows client to request an access token behalf of this user. However, this is only allowed if this call is made by admin user</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">registryDetails</value>
+          <value name="field_type">recref</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">IData</value>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+          <value name="modifiable">true</value>
+          <value name="rec_ref">wx.packages.manager.registry_.docTypes:Registry</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">for</value>
+          <value name="field_name">userID</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
-          <value name="field_opt">true</value>
           <array name="field_options" type="value" depth="1">
           </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">internalUserID</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">isAdministrator</value>
+          <value name="field_type">object</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">java.lang.Boolean</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
@@ -96,14 +126,54 @@
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
           <value name="node_subtype">unknown</value>
-          <value name="node_comment">long term token than can now be used for CI/CD scripts etc</value>
+          <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">accessToken</value>
+          <value name="field_name">sourceUrl</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">sourcePath</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
+          <array name="field_options" type="value" depth="1">
+          </array>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_usereditable">true</value>
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">sourceAccessKey</value>
           <value name="field_type">string</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
@@ -117,11 +187,44 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">Exchanges short term token generated via authenticate service for a long term token that can be then used in CI/CD scripts for automation.
-Label is required for tracking purposes, see listTokens service. User can specify an optiona numDays after which the token is revoked automatically.
-User can then revoke tokens via the revokeToken service for tokens that never expire or expire a token before numDays has been reached.
+  <value name="node_comment">## get download properties for a package
 
-The service also allows an admin user to request tokens on behalf of other users via the optional for attribute.</value>
+Retrieves the necessary git properties including your access token so that you can download the package source code locally.
+
+NOTE: the sourceToken is a private key that should be used to authenticate if the associated git is private. They key should be written to a local
+secure file (i.e. readonly to the specific user) and then included in the git command as such where github_rsa is the name of the file.
+
+```
+$ git clone git@github.com:johnpcarter/wm.git --config core.sshCommand="ssh -i github_rsa"
+```
+
+This method can be called anoymously, but will only return packages for public registries
+
+The trust attribute can be used to determine if the source code for the package and version is trust worthy or not.
+UNDEFINED is returned where you have not indicated what version to dowload and hence will be based on the main branch.
+ACCEPTED indicates that the version is recognised by the package manager but cannot be implicitly trusted as the code could have been modified.
+TRUSTED shows that the version is recognised and that the code has not been modified i.e. we have check the signaure against the signature recorded when originally trusting the the tag.
+TRUSTED_WITH_ISSUES indicates that although the signature matches ours, that git has issues with the signaure, in which case refer to the reason output.
+
+UNDEFINED and ACCEPTED will not available to packages in registries with a TRUST_LEVEL higher than 0 i.e. packages must either be trustworthy or not.
+ 
+NOTE: The above command will only give read access to the git repository and does not provide any collaboration features.
+
+## INPUT
+registry - registry to query, uses default if not provided.
+packageName - the package to be downloaded.
+tag - (optional) branch tag to download, main branch is used if not given.
+
+## OUTPUT
+sourceUrl - the url to the git repository
+sourceUserId - your git id (required if the git repo is private)
+sourceToken - the git token that you generated to allow access to private repo
+trust - One of TRUSTED, NOT_TRUSTED, ACCEPTED, NOT_ACCEPTED, or TRUSTED_WITH_ISSUES or UNDEFINED
+reason - (optional) describes why TRUSTD_WITH_ISSUES was returned.
+
+## ERRORS
+(1) Non existent package/tag or associated with private repository for which you don't have permission
+</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
@@ -137,7 +240,12 @@ The service also allows an admin user to request tokens on behalf of other users
   <value name="svc_out_validator_options">none</value>
   <value name="auditoption">0</value>
   <null name="auditfields_input"/>
-  <null name="auditfields_output"/>
+  <array name="auditfields_output" type="value" depth="2">
+    <array type="value" depth="1">
+      <value>/sourcePath;1;0</value>
+      <value>sourcePath</value>
+    </array>
+  </array>
   <record name="auditsettings" javaclass="com.wm.util.Values">
     <value name="document_data">0</value>
     <value name="startExecution">false</value>

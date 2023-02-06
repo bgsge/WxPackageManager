@@ -4244,7 +4244,9 @@ success - true if operation was successful</value>
           <value name="nsName">/access/token/{label}_GET</value>
           <value name="description">Exchanges short term token generated via authenticate service for a long term token that can be then used in CI/CD scripts for automation.
 Label is required for tracking purposes, see listTokens service. User can specify an optiona numDays after which the token is revoked automatically.
-User can revoke tokens via the revokeToken service for tokens that never expire or expire a token before numDays has been reached.</value>
+User can then revoke tokens via the revokeToken service for tokens that never expire or expire a token before numDays has been reached.
+
+The service also allows an admin user to request tokens on behalf of other users via the optional for attribute.</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>/access/token/{label}_GET_$response</value>
           </array>
@@ -4267,6 +4269,18 @@ User can revoke tokens via the revokeToken service for tokens that never expire 
               <value name="type">STRING</value>
               <value name="description">label to easily identify token when listing/revoking later</value>
               <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="for" javaclass="com.wm.util.Values">
+              <value name="name">for</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <value name="description">(optional) Allows client to request an access token behalf of this user. However, this is only allowed if this call is made by admin user</value>
+              <Boolean name="isRequired">false</Boolean>
               <Boolean name="isArray">false</Boolean>
               <null name="defaultValue"/>
               <null name="refDefinition"/>
@@ -5602,6 +5616,18 @@ success - true if successful</value>
               <value name="type">STRING</value>
               <null name="description"/>
               <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="filter" javaclass="com.wm.util.Values">
+              <value name="name">filter</value>
+              <value name="source">QUERY</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
               <Boolean name="isArray">false</Boolean>
               <null name="defaultValue"/>
               <null name="refDefinition"/>
