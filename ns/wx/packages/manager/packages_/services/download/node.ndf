@@ -201,7 +201,7 @@ multi-part content with main part in application/zip format.
     <value>PUT</value>
     <value>PATCH</value>
   </array>
-  <value name="pipeline_option">3</value>
+  <value name="pipeline_option">2</value>
   <null name="originURI"/>
   <value name="modifiable">true</value>
   <value name="is_public">false</value>
