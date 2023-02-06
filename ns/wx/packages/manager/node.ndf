@@ -1991,18 +1991,6 @@ Allows you to register an email address to be informed when new package are adde
           <value name="definitionName">manifest</value>
           <Boolean name="includeInRad">true</Boolean>
         </record>
-        <record name="isAllowed" javaclass="com.wm.util.Values">
-          <value name="name">isAllowed</value>
-          <value name="source">QUERY</value>
-          <value name="type">BOOLEAN</value>
-          <null name="description"/>
-          <Boolean name="isRequired">true</Boolean>
-          <Boolean name="isArray">false</Boolean>
-          <null name="defaultValue"/>
-          <null name="refDefinition"/>
-          <null name="definitionName"/>
-          <Boolean name="includeInRad">true</Boolean>
-        </record>
       </record>
     </record>
     <record name="/package/{packageName}/users_GET_$response" javaclass="com.wm.util.Values">

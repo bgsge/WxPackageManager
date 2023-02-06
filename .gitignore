@@ -2,3 +2,5 @@
 resources/*
 *.xml.bak
 *.jks
+*.bak
+manifest.bak
