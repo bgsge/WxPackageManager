@@ -484,7 +484,7 @@ public final class tools
 		// process
 		
 		int maxCols = -1;
-		int maxInterval = 15;
+		int maxInterval = 5;
 		
 		try { maxCols = Integer.parseInt(maxColumns); } catch(Exception e) {}
 		try { maxInterval = Integer.parseInt(maxPad); } catch(Exception e) {}

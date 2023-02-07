@@ -61,8 +61,8 @@
     </div>
 </nav>
 <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="main-home" role="tabpanel" aria-labelledby="main-home-tab">
-     <div class="container-fluid">
+    <div class="tab-pane fade show active" id="document" role="tabpanel" aria-labelledby="document-tab">
+        <div class="container-fluid">
             <div class="row">
                 <ul class="col-2 dlt-panel dlt-panel__left nav flex-column nav-pills side-navbar"
                     style="font-size: 16px;padding-right: 0%;background-color:#f2f2f2;top:3.5rem;">
