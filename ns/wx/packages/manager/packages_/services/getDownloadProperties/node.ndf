@@ -146,27 +146,16 @@ $ git clone git@github.com:johnpcarter/wm.git --config core.sshCommand="ssh -i g
 
 This method can be called anoymously, but will only return packages for public registries
 
-The trust attribute can be used to determine if the source code for the package and version is trust worthy or not.
-UNDEFINED is returned where you have not indicated what version to dowload and hence will be based on the main branch.
-ACCEPTED indicates that the version is recognised by the package manager but cannot be implicitly trusted as the code could have been modified.
-TRUSTED shows that the version is recognised and that the code has not been modified i.e. we have check the signaure against the signature recorded when originally trusting the the tag.
-TRUSTED_WITH_ISSUES indicates that although the signature matches ours, that git has issues with the signaure, in which case refer to the reason output.
-
-UNDEFINED and ACCEPTED will not available to packages in registries with a TRUST_LEVEL higher than 0 i.e. packages must either be trustworthy or not.
- 
 NOTE: The above command will only give read access to the git repository and does not provide any collaboration features.
 
 ## INPUT
 registry - registry to query, uses default if not provided.
 packageName - the package to be downloaded.
-tag - (optional) branch tag to download, main branch is used if not given.
 
 ## OUTPUT
 sourceUrl - the url to the git repository
 sourceUserId - your git id (required if the git repo is private)
 sourceToken - the git token that you generated to allow access to private repo
-trust - One of TRUSTED, NOT_TRUSTED, ACCEPTED, NOT_ACCEPTED, or TRUSTED_WITH_ISSUES or UNDEFINED
-reason - (optional) describes why TRUSTD_WITH_ISSUES was returned.
 
 ## ERRORS
 (1) Non existent package/tag or associated with private repository for which you don't have permission

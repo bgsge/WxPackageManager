@@ -467,6 +467,8 @@ public final class tools
 		// [i] record:1:required results
 		// [i] - object:0:required TRACK_DATE
 		// [i] - object:0:required DOWNLOAD_COUNT
+		// [i] field:0:optional maxColumns
+		// [i] field:0:optional maxPaddingInterval
 		// [o] record:1:required paddedResults
 		// [o] - field:0:required label
 		// [o] - object:0:required value
@@ -474,9 +476,18 @@ public final class tools
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();	
 		IData[] results = IDataUtil.getIDataArray(pipelineCursor, "results");
+		String maxColumns = IDataUtil.getString(pipelineCursor, "maxColumns");
+		String maxPad = IDataUtil.getString(pipelineCursor, "maxPadInterval");
+		
 		pipelineCursor.destroy();
 		
 		// process
+		
+		int maxCols = -1;
+		int maxInterval = 15;
+		
+		try { maxCols = Integer.parseInt(maxColumns); } catch(Exception e) {}
+		try { maxInterval = Integer.parseInt(maxPad); } catch(Exception e) {}
 		
 		ArrayList<IData> paddedResults = new ArrayList<IData>();
 		
@@ -496,18 +507,33 @@ public final class tools
 				
 				
 				int numDays = Period.between(convertDateToLocalDate(date), convertDateToLocalDate(nextDate)).getDays();
+				boolean dotdot = false;
+						
+				if (numDays > maxInterval) {
+					numDays = maxInterval;
+					dotdot = true;
+				}
 				
 				for (int z = 0; z < numDays-1; z++) {
 					date = Date.from(date.toInstant().plus(1, ChronoUnit.DAYS));
 					
-					paddedResults.add(makeValue(date, 0));
+					if (z == numDays-2 && dotdot) {
+						paddedResults.add(makeValue("...", 0));
+					} else {
+						paddedResults.add(makeValue(date, 0));
+					}
 				}
 			}			
 		}
 		
-		// paddedResults
+		// output
 		
-		IDataUtil.put(pipelineCursor, "paddedResults", paddedResults.toArray(new IData[paddedResults.size()]));
+		if (maxCols != -1 && paddedResults.size() > maxCols) {
+			IDataUtil.put(pipelineCursor, "paddedResults", paddedResults.subList(paddedResults.size() - maxCols, paddedResults.size()).toArray(new IData[paddedResults.size()]));
+		} else {
+			IDataUtil.put(pipelineCursor, "paddedResults", paddedResults.toArray(new IData[paddedResults.size()]));
+		}
+		
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
@@ -706,15 +732,21 @@ public final class tools
 	
 	public static IData makeValue(Date date, int v) {
 	
+		return makeValue(formatDate(date), v);
+	}
+	
+	public static IData makeValue(String label, int v) {
+		
 		IData value = IDataFactory.create();
 		
 		IDataCursor paddedResultsCursor = value.getCursor();
-		IDataUtil.put(paddedResultsCursor, "label", formatDate(date));
+		IDataUtil.put(paddedResultsCursor, "label", label);
 		IDataUtil.put(paddedResultsCursor, "value", v);
 		paddedResultsCursor.destroy();
 		
 		return value;
 	}
+	
 	
 	public static LocalDate convertDateToLocalDate(Date date) {
 	
@@ -723,7 +755,7 @@ public final class tools
 	      .toLocalDate();
 	}
 	
-	public static final String TIMESTAMP_PATTERN = "dd-MM-yy";
+	public static final String TIMESTAMP_PATTERN = "dd-MMM";
 	public static final DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern(TIMESTAMP_PATTERN);
 	
 	public static String formatDate(Date date) {
