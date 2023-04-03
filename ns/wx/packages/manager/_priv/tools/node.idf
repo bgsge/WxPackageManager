@@ -70,5 +70,6 @@ ICB9CiAgICAgICAgIAogICAgICAgICBmaWxlLmRlbGV0ZSgpOwogICAgICB9CiAgIH0=</value>
     <value>java.util.Formatter</value>
     <value>java.util.HashMap</value>
     <value>com.softwareag.is.dynamicvariables.DynamicVariablesEncryptor</value>
+    <value>com.softwareag.util.IDataMap</value>
   </array>
 </Values>

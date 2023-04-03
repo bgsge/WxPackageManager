@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import com.softwareag.is.dynamicvariables.DynamicVariablesEncryptor;
+import com.softwareag.util.IDataMap;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class tools
@@ -246,10 +247,21 @@ public final class tools
 		
 		String value = null;
 		
-		if (claims != null) {
-			IDataCursor c = ((IData) claims).getCursor();
-			value = IDataUtil.getString(c, ref);
-			c.destroy();
+		if (claims instanceof IData) {
+			 IDataCursor c = ((IData) claims).getCursor();
+			 value = IDataUtil.getString(c, ref);
+			 c.destroy();
+		} else {
+			IData[] test = (IData[]) claims;
+			for (int i=0; i<test.length; i++) {
+				
+				//IDataCursor dc = test[i].getCursor();
+			 	//System.out.println("" + i + " - " + test[i].toString());
+			 	IDataMap dm = new IDataMap(test[i]);
+			 	if (dm.get("name").equals(ref)) {
+			 		value = (String) dm.get("value");
+			 	}
+			}
 		}
 		
 		// pipeline out
