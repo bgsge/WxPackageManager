@@ -2509,7 +2509,7 @@
 </INVOKE>
 
 <INVOKE TIMEOUT="" SERVICE="wm.server.access:aclAssign" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT>wx.packages.manager.packages_.services:movePackage</COMMENT>
+  <COMMENT>wx.packages.manager.packages_.services:move</COMMENT>
 
   <!-- nodes -->
 
@@ -2629,26 +2629,6 @@
 
   <!-- nodes -->
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/target;1;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <value name="xml">wx.packages.manager.packages_.services:movePackage</value>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">field</value>
-    <value name="node_subtype">unknown</value>
-    <value name="is_public">false</value>
-    <value name="field_name">target</value>
-    <value name="field_type">string</value>
-    <value name="field_dim">0</value>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
-
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/acl;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
 
@@ -2662,6 +2642,26 @@
     <value name="field_type">string</value>
     <value name="field_dim">0</value>
     <value name="field_opt">true</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/target;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">wx.packages.manager.packages_.services:move</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">field</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_name">target</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
     <value name="nillable">true</value>
     <value name="form_qualified">false</value>
     <value name="is_global">false</value>
@@ -3988,6 +3988,9 @@
   <COMMENT></COMMENT>
 
   <!-- nodes -->
+
+<MAP MODE="INPUT">
+</MAP>
 
 <MAP MODE="OUTPUT">
 </MAP>
