@@ -89,7 +89,8 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">Returns the user information associated with the given credentials, be it a JWT token or basic authentication.
+Returns a 401 error if the token is invalid or has been revoked by the administrator.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

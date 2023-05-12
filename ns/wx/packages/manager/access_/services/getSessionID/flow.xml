@@ -534,7 +534,7 @@
 
   <!-- nodes -->
 
-<SEQUENCE NAME="/^Bearer /" TIMEOUT="" EXIT-ON="FAILURE">
+<SEQUENCE NAME="/^[Bb]earer /" TIMEOUT="" EXIT-ON="FAILURE">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
