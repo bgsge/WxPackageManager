@@ -438,12 +438,12 @@
 </MAP>
 </INVOKE>
 
-<BRANCH TIMEOUT="" SWITCH="/pipeline/$errorMessage">
+<BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
   <COMMENT>was login successful</COMMENT>
 
   <!-- nodes -->
 
-<SEQUENCE NAME="$null" TIMEOUT="" EXIT-ON="FAILURE">
+<SEQUENCE NAME="%pipeline% != $null &amp;&amp; %pipeline/$errorMessage% == $null" TIMEOUT="" EXIT-ON="FAILURE">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -3959,28 +3959,6 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">host</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">useDefaultKeystore</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -4233,6 +4211,12 @@
 </MAPDELETE>
 
 <MAPDELETE FIELD="/header;2;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/host;1;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/useDefaultKeystore;1;0">
 </MAPDELETE>
 </MAP>
 </FLOW>
