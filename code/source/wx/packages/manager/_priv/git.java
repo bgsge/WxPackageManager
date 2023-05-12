@@ -214,9 +214,7 @@ public final class git
 			Collection<Ref> map;
 			
 			if (user != null && !user.equals("null")) {
-				
-				System.out.println("will use credentials for " + user);
-				
+								
 				map = Git.lsRemoteRepository()
 			        .setRemote(url)
 			        .setTags(true)
@@ -234,9 +232,7 @@ public final class git
 				ObjectId peeledRef = entry.getPeeledObjectId();
 				
 				if (tag != null) {
-					
-					System.out.println("comparing '" + entry.getName().substring(10)+ "' == '" + tag + "'");
-					
+										
 					if (entry.getName().substring(10).equals(tag)) {
 						if (peeledRef != null) {
 							tags.add(peeledRef.getName());
