@@ -53,6 +53,7 @@ ICB9CiAgICAgICAgIAogICAgICAgICBmaWxlLmRlbGV0ZSgpOwogICAgICB9CiAgIH0=</value>
   <array name="implements" type="value" depth="1">
   </array>
   <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.ServiceThread</value>
     <value>java.io.File</value>
     <value>java.io.IOException</value>
     <value>java.nio.file.CopyOption</value>

@@ -7,6 +7,7 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.wm.app.b2b.server.ServiceThread;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.CopyOption;
@@ -268,6 +269,43 @@ public final class tools
 		
 		IDataUtil.put(pipelineCursor, "value", value);
 		pipelineCursor.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void invokeAsync (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(invokeAsync)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required service
+		// [i] record:0:required pipeline
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String service = IDataUtil.getString(pipelineCursor, "service");
+		
+		IData p = IDataUtil.getIData(pipelineCursor, "pipeline");
+		
+		/*if (p == null) {
+			p = IDataFactory.create();
+		}*/
+		
+		int index = service.indexOf(":");
+		String ifc = "";
+		
+		if (index != -1) {
+			ifc = service.substring(0, index);
+			service = service.substring(index+1);
+		}
+		
+		Service.doThreadInvoke(ifc, service, p);
+		
+		// pipeline out
 			
 		// --- <<IS-END>> ---
 
